@@ -38,7 +38,6 @@ export default function Home() {
     });
   }, [lang]);
 
-  // 에러 발생했던 부분: id에 string 타입 지정
   const scrollToSection = (id: string) => {
     gsap.to(window, {
       duration: 1.2,
@@ -81,7 +80,7 @@ export default function Home() {
       dit: "あなたが頭の中に描いたイメージを, 現場のモニターに鮮やかに咲かせます。",
       contact_msg: "すべての軌道を超えて, あなたのもとへ",
       form_name: "お名前", form_phone: "電話番号", form_email: "メールアドレス", form_msg: "内容", form_send: "送信",
-      role_edit: "編集", role_on_set: "現場編集 / 色補正", role_drone: "ドローン", role_dit: "D.I.T", role_complex: "D.I.T / 編集 / 色補正",
+      role_edit: "編集", role_on_set: "現場편집 / 色補正", role_drone: "ドローン", role_dit: "D.I.T", role_complex: "D.I.T / 편집 / 色補正",
       role_making: "メイキング映像", role_production: "制作", role_pepsi: "現場編集 / D.I.T", role_color: "色補正",
       role_shooting_color: "撮影 / 色補正", role_total_edit: "総合編集", role_assistant_director: "助監督",
       role_shooting: "촬영", role_rough_cut: "仮編集"
@@ -106,17 +105,17 @@ export default function Home() {
   
   const portfolioData: Project[] = [
     { titles: { KR: "2025 FST 공식 데일리 티저", EN: "2025 FST official daily teaser", JP: "2025 FST 公式デイリーティーザー" }, roleKey: "role_edit", cats: ["EDIT"], link: "https://youtu.be/5ckTO9U8zp8", thumbnail: "https://img.youtube.com/vi/5ckTO9U8zp8/maxresdefault.jpg" },
-    { titles: { KR: "어쩌면 해피엔딩", EN: "Maybe Happy Ending", JP: "ひょっとしてハッピーエンディング" }, roleKey: "role_on_set", cats: ["EDIT", "COLOR GRADING"], link: "#", thumbnail: "/MFLS.png" },
-    { titles: { KR: "독친", EN: "Toxic Daughter", JP: "毒親" }, roleKey: "role_drone", cats: ["SHOOTING"], link: "#", thumbnail: "/Toxic.png" },
+    { titles: { KR: "어쩌면 해피엔딩", EN: "Maybe Happy Ending", JP: "ひょっとしてハッピーエン딩" }, roleKey: "role_on_set", cats: ["EDIT", "COLOR GRADING"], link: "#", thumbnail: "/MFLS.png" },
+    { titles: { KR: "독친", EN: "Toxic Daughter", JP: "독친" }, roleKey: "role_drone", cats: ["SHOOTING"], link: "#", thumbnail: "/Toxic.png" },
     { titles: { KR: "under your bed", EN: "under your bed", JP: "under your bed" }, roleKey: "role_dit", cats: ["D.I.T"], link: "#", thumbnail: "/UYB.jpeg" },
     { titles: { KR: "6시간 후 너는 죽는다", EN: "You Will Die in 6 Hours", JP: "6時間後に君は死ぬ" }, roleKey: "role_dit", cats: ["D.I.T"], link: "#", thumbnail: "/6hours.jpeg" },
-    { titles: { KR: "루프", EN: "The Loop", JP: "ループ" }, roleKey: "role_dit", cats: ["D.I.T"], link: "#", thumbnail: "/Loop.jpeg" },
+    { titles: { KR: "루프", EN: "The Loop", JP: "루프" }, roleKey: "role_dit", cats: ["D.I.T"], link: "#", thumbnail: "/Loop.jpeg" },
     { titles: { KR: "신사 : 악귀의 속삭임", EN: "The Shrine", JP: "神社：悪鬼の囁き" }, roleKey: "role_dit", cats: ["D.I.T"], link: "#", thumbnail: "/shrine.jpg" },
     { titles: { KR: "흥신소", EN: "Detective agency", JP: "興信所" }, roleKey: "role_complex", cats: ["D.I.T", "EDIT", "COLOR GRADING"], link: "#", thumbnail: "/흥신소.jpg" },
     { titles: { KR: "옥수수수염차-IVE CF", EN: "Oksusu Suyeom Cha-IVE CF", JP: "とうもろこしひげ茶-IVE CM" }, roleKey: "role_making", cats: ["PRODUCTION"], link: "https://youtu.be/aulQMA8J5l8", thumbnail: "https://img.youtube.com/vi/aulQMA8J5l8/maxresdefault.jpg" },
     { titles: { KR: "그릴리-정경호 CF (Making)", EN: "Grilly-Jung Kyung-ho CF (Making Film)", JP: "Grilly-チョン・ギョンホ CM (メイキング)" }, roleKey: "role_making", cats: ["PRODUCTION"], link: "https://youtu.be/ivg4GFTbTAc", thumbnail: "https://img.youtube.com/vi/ivg4GFTbTAc/maxresdefault.jpg" },
     { titles: { KR: "그릴리-정경호 CF (Shortform)", EN: "Grilly-Jung Kyung-ho Shortform CF", JP: "Grilly-チョン・ギョンホ ショートフォーム CM" }, roleKey: "role_production", cats: ["PRODUCTION"], link: "https://youtube.com/shorts/TNKk8ohUL1I", thumbnail: "https://img.youtube.com/vi/TNKk8ohUL1I/maxresdefault.jpg" },
-    { titles: { KR: "KB다이렉트자동차보험-김연아 CF", EN: "KB Direct Car Insurance-Kim Yuna CF", JP: "KBダイレクト自動車保険-キム・ヨナ CM" }, roleKey: "role_production", cats: ["PRODUCTION"], link: "https://youtube.com/shorts/8YOYu1gh1tI", thumbnail: "https://img.youtube.com/vi/8YOYu1gh1tI/maxresdefault.jpg" },
+    { titles: { KR: "KB다이렉트자동차보험-김연아 CF", EN: "KB Direct Car Insurance-Kim Yuna CF", JP: "KBダイレクト자동차보험-キム・ヨナ CM" }, roleKey: "role_production", cats: ["PRODUCTION"], link: "https://youtube.com/shorts/8YOYu1gh1tI", thumbnail: "https://img.youtube.com/vi/8YOYu1gh1tI/maxresdefault.jpg" },
     { titles: { KR: "펩시-채수빈 CF", EN: "Pepsi-Chae Soo-bin CF", JP: "ペプシ-チェ・スビン CM" }, roleKey: "role_pepsi", cats: ["D.I.T", "EDIT"], link: "https://www.youtube.com/watch?v=85w6KAXCl9I", thumbnail: "https://img.youtube.com/vi/85w6KAXCl9I/maxresdefault.jpg" },
     { titles: { KR: "포켓몬카드-김효연,노혜성", EN: "Pokemon Card-Kim Hyo-yeon, Noh Hye-seong", JP: "ポケモンカード-キム・ヒョヨン, ノ・ヘソン" }, roleKey: "role_pepsi", cats: ["D.I.T"], link: "https://www.youtube.com/watch?v=DM4sNZUA-T0", thumbnail: "https://img.youtube.com/vi/DM4sNZUA-T0/maxresdefault.jpg" },
     { titles: { KR: "Heuhike 패션필름", EN: "Heuhike Fashion Film", JP: "Heuhike ファッションフィルム" }, roleKey: "role_color", cats: ["COLOR GRADING"], link: "https://www.youtube.com/watch?v=GrDRMbdkFfw", thumbnail: "https://img.youtube.com/vi/GrDRMbdkFfw/maxresdefault.jpg" },
@@ -126,13 +125,13 @@ export default function Home() {
     { titles: { KR: "숏폼드라마-계속 나를 망상해줘요", EN: "Short-form Drama: Keep Deluding Me", JP: "ショートフォームドラマ-私を妄想し続けて" }, roleKey: "role_color", cats: ["COLOR GRADING"], link: "#", thumbnail: "/망상.png" },
     { titles: { KR: "숏폼드라마-이혼당한 공주님의 달콤한 재혼", EN: "Short-form Drama: Sweet Remarriage", JP: "ショートフォームドラマ-捨てられたお嬢様のスイートな彼" }, roleKey: "role_shooting_color", cats: ["SHOOTING", "COLOR GRADING"], link: "https://www.youtube.com/watch?v=UaGy-L3Ts6Q", thumbnail: "https://img.youtube.com/vi/UaGy-L3Ts6Q/maxresdefault.jpg" },
     { titles: { KR: "KBSN-리얼그린도시락패밀리", EN: "KBSN - Real Green Lunchbox Family", JP: "KBSN - リアルグリーンお弁当ファミリー" }, roleKey: "role_total_edit", cats: ["EDIT"], link: "#", thumbnail: "/도시락.png" },
-    { titles: { KR: "TicToc-Irene 굿즈행사 스케치영상", EN: "TicToc-Irene Goods Event Sketch", JP: "TicToc-Irene グッズイベント ス케ッチ映像" }, roleKey: "role_production", cats: ["PRODUCTION"], link: "https://youtu.be/dYPIjBO7W6w", thumbnail: "https://img.youtube.com/vi/dYPIjBO7W6w/maxresdefault.jpg" },
+    { titles: { KR: "TicToc-Irene 굿즈행사 스케치영상", EN: "TicToc-Irene Goods Event Sketch", JP: "TicToc-Irene グッズイベント スケッチ映像" }, roleKey: "role_production", cats: ["PRODUCTION"], link: "https://youtu.be/dYPIjBO7W6w", thumbnail: "https://img.youtube.com/vi/dYPIjBO7W6w/maxresdefault.jpg" },
     { titles: { KR: "[MV]The Bowls-Mr.Love", EN: "[MV]The Bowls-Mr.Love", JP: "[MV]The Bowls-Mr.Love" }, roleKey: "role_assistant_director", cats: ["PRODUCTION"], link: "https://www.youtube.com/watch?v=fCF-7ZW7KNQ", thumbnail: "https://img.youtube.com/vi/fCF-7ZW7KNQ/maxresdefault.jpg" },
     { titles: { KR: "[MV]MAX-Old Fashion (Feat. Young ill)", EN: "[MV]MAX-Old Fashion (Feat. Young ill)", JP: "[MV]MAX-Old Fashion (Feat. Young ill)" }, roleKey: "role_color", cats: ["COLOR GRADING"], link: "https://www.youtube.com/watch?v=kwIS8Q0MHyk", thumbnail: "https://img.youtube.com/vi/kwIS8Q0MHyk/maxresdefault.jpg" },
-    { titles: { KR: "현대 엘리베이터-충주시", EN: "Hyundai Elevator - Chungju City", JP: "現代エレベーター-忠州市" }, roleKey: "role_shooting", cats: ["SHOOTING"], link: "https://www.youtube.com/watch?v=Yj7hYwzyKP8", thumbnail: "https://img.youtube.com/vi/Yj7hYwzyKP8/maxresdefault.jpg" },
+    { titles: { KR: "현대 엘리베이터-충주시", EN: "Hyundai Elevator - Chungju City", JP: "現代エレ베ーター-忠州市" }, roleKey: "role_shooting", cats: ["SHOOTING"], link: "https://www.youtube.com/watch?v=Yj7hYwzyKP8", thumbnail: "https://img.youtube.com/vi/Yj7hYwzyKP8/maxresdefault.jpg" },
     { titles: { KR: "현대엘리베이터ㅣ충주 스마트캠퍼스 - 디지털 투어", EN: "Hyundai Elevator Chungju Smart Campus - Digital Tour", JP: "現代エレベーターㅣ忠州スマートキャンパス - デジタルツアー" }, roleKey: "role_shooting", cats: ["SHOOTING"], link: "https://www.youtube.com/watch?v=rbV8okPYLO4", thumbnail: "https://img.youtube.com/vi/rbV8okPYLO4/maxresdefault.jpg" },
     { titles: { KR: "삼겹살입니다만", EN: "It's Samgyeopsal", JP: "サムギョプサルですが" }, roleKey: "role_rough_cut", cats: ["EDIT"], link: "#", thumbnail: "/삼겹살.jpg" },
-    { titles: { KR: "가디언엔젤스코리아 스케치영상", EN: "Guardian Angels Korea Sketch Video", JP: "ガー디アンエンジェルス・コリア スケッチ映像" }, roleKey: "role_production", cats: ["PRODUCTION"], link: "https://youtu.be/msDcJcXktjQ", thumbnail: "https://img.youtube.com/vi/msDcJcXktjQ/maxresdefault.jpg" },
+    { titles: { KR: "가디언엔젤스코리아 스케치영상", EN: "Guardian Angels Korea Sketch Video", JP: "ガーディアンエンジェルス・コリア ス케치 영상" }, roleKey: "role_production", cats: ["PRODUCTION"], link: "https://youtu.be/msDcJcXktjQ", thumbnail: "https://img.youtube.com/vi/msDcJcXktjQ/maxresdefault.jpg" },
     { titles: { KR: "킨더포레지니 영어유치원 홍보영상", EN: "Kinder Foret Genie English Kindergarten Promo", JP: "キンダーフォレジニ 英語幼稚園 広報映像" }, roleKey: "role_production", cats: ["PRODUCTION"], link: "https://youtu.be/jn_m8G7yQnA", thumbnail: "https://img.youtube.com/vi/jn_m8G7yQnA/maxresdefault.jpg" }
   ];
 
@@ -213,7 +212,7 @@ export default function Home() {
             <div><label className="text-xs uppercase tracking-widest text-gray-300 mb-2 block">{t[lang].form_name}</label><input type="text" name="name" required value={formData.name} onChange={handleChange} className="w-full bg-white/5 border border-white/10 px-4 py-3 text-base text-white focus:border-cyan-500 outline-none transition-colors" /></div>
             <div><label className="text-xs uppercase tracking-widest text-gray-300 mb-2 block">{t[lang].form_phone}</label><input type="text" name="phone" required value={formData.phone} onChange={handleChange} className="w-full bg-white/5 border border-white/10 px-4 py-3 text-base text-white focus:border-cyan-500 outline-none transition-colors" /></div>
             <div className="md:col-span-2"><label className="text-xs uppercase tracking-widest text-gray-300 mb-2 block">{t[lang].form_email}</label><input type="email" name="email" required value={formData.email} onChange={handleChange} className="w-full bg-white/5 border border-white/10 px-4 py-3 text-base text-white focus:border-cyan-500 outline-none transition-colors" /></div>
-            <div className="md:col-span-2"><label className="text-xs uppercase tracking-widest text-gray-300 mb-2 block">{t[lang].form_msg}</label><textarea name="message" rows="5" required value={formData.message} onChange={handleChange} className="w-full bg-white/5 border border-white/10 px-4 py-3 text-base text-white focus:border-cyan-500 outline-none transition-colors resize-none"></textarea></div>
+            <div className="md:col-span-2"><label className="text-xs uppercase tracking-widest text-gray-300 mb-2 block">{t[lang].form_msg}</label><textarea name="message" rows={5} required value={formData.message} onChange={handleChange} className="w-full bg-white/5 border border-white/10 px-4 py-3 text-base text-white focus:border-cyan-500 outline-none transition-colors resize-none"></textarea></div>
             <div className="md:col-span-2 text-center mt-4"><button type="submit" className="px-12 py-4 bg-white text-black text-xs font-bold uppercase tracking-[0.3em] hover:bg-cyan-500 hover:text-white transition-all">{t[lang].form_send}</button></div>
           </form>
         </div>
