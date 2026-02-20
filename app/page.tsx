@@ -173,7 +173,7 @@ export default function Home() {
 
       <section id="expertise" className="expertise-section py-32 px-8 max-w-6xl mx-auto relative z-10 bg-black">
         <h2 className="text-4xl font-bold mb-20 border-b border-white/10 pb-4 uppercase tracking-widest italic text-white text-center">Our Spectrum</h2>
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-x-16 gap-y-24 text-left">
+        <div className="grid grid-cols-2 lg:grid-cols-3 gap-x-16 gap-y-24 text-left">
           {["production", "creative", "shooting", "edit", "color", "dit"].map((key) => (
             <div key={key} className="animate-item">
               <h3 className="text-2xl font-bold mb-6 text-cyan-400 italic tracking-wider uppercase border-l-2 border-cyan-400 pl-4">
@@ -192,7 +192,7 @@ export default function Home() {
             <button key={cat} onClick={() => setFilter(cat)} className={`text-xs tracking-[0.2em] uppercase transition-all ${filter === cat ? "text-cyan-400 border-b border-cyan-400" : "text-gray-400 hover:text-white"}`}>{cat}</button>
           ))}
         </div>
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 text-left px-4">
+        <div className="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 text-left px-4">
           {portfolioData.filter(item => filter === "ALL" || item.cats.includes(filter)).map((item, idx) => (
             <div key={`${filter}-${idx}`} onClick={() => item.link !== "#" && setSelectedVideo(item.link)} className="group cursor-pointer portfolio-item">
               <div className="relative w-full aspect-video mb-4 overflow-hidden border border-white/10 bg-zinc-950">
