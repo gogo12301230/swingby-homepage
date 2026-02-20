@@ -9,7 +9,6 @@ if (typeof window !== "undefined") {
   gsap.registerPlugin(ScrollTrigger, ScrollToPlugin);
 }
 
-// 프로젝트 데이터 타입 정의
 interface Project {
   titles: { [key: string]: string };
   roleKey: string;
@@ -25,6 +24,7 @@ export default function Home() {
   const [selectedVideo, setSelectedVideo] = useState<string | null>(null);
 
   useEffect(() => {
+    // 1. Our Spectrum 애니메이션 (기존)
     gsap.from(".expertise-section h2, .animate-item", {
       scrollTrigger: {
         trigger: ".expertise-section",
@@ -36,7 +36,21 @@ export default function Home() {
       y: 100,
       stagger: 0.2,
     });
-  }, [lang]);
+
+    // 2. Works 섹션 애니메이션 추가
+    gsap.from(".portfolio-item", {
+      scrollTrigger: {
+        trigger: "#portfolio",
+        start: "top 85%",
+        toggleActions: "play none none none",
+      },
+      opacity: 0,
+      y: 50,
+      duration: 0.8,
+      stagger: 0.1,
+      ease: "power2.out"
+    });
+  }, [lang, filter]); // 필터 바뀔 때마다 다시 실행되게 filter 추가
 
   const scrollToSection = (id: string) => {
     gsap.to(window, {
@@ -65,7 +79,7 @@ export default function Home() {
       color: "색으로 전하는 이야기. 빛의 미묘한 차이를 읽어 작품만의 독보적인 온도를 찾아냅니다.",
       dit: "당신이 머릿속에 그린 이미지를 현장의 모니터 위로 생생하게 피워냅니다.",
       contact_msg: "모든 궤도를 넘어 당신에게로",
-      form_name: "이름", form_phone: "연락처", form_email: "이메일 주소", form_msg: "내용", form_send: "보내기",
+      form_name: "이름", form_phone: "연락처", form_email: "이메일 주소", form_msg: "내용", form_send: "SEND",
       role_edit: "편집", role_on_set: "현장편집 / 색보정", role_drone: "드론", role_dit: "D.I.T", role_complex: "D.I.T / 편집 / 색보정",
       role_making: "메이킹 필름", role_production: "제작", role_pepsi: "현장편집 / D.I.T", role_color: "색보정",
       role_shooting_color: "촬영 / 색보정", role_total_edit: "종합편집", role_assistant_director: "조감독",
@@ -79,7 +93,7 @@ export default function Home() {
       color: "色で伝える物語。光の微妙な差を読み取り、 作品だけの独歩的な温度を見つけ出します。",
       dit: "あなたが頭の中に描いたイメージを、 現場のモニターに鮮やかに咲かせます。",
       contact_msg: "すべての軌道を超えて、 あなたのもとへ",
-      form_name: "お名前", form_phone: "電話番号", form_email: "メールアドレス", form_msg: "内容", form_send: "送信",
+      form_name: "お名前", form_phone: "電話番号", form_email: "メールアドレス", form_msg: "内容", form_send: "SEND",
       role_edit: "編集", role_on_set: "現場編集 / カラーグレーディング", role_drone: "ドローン", role_dit: "D.I.T", role_complex: "D.I.T / 編集 / カラーグレーディング",
       role_making: "メイキング映像", role_production: "制作", role_pepsi: "現場編集 / D.I.T", role_color: "カラーグレーディング",
       role_shooting_color: "撮影 / カラーグレーディング", role_total_edit: "総合編集", role_assistant_director: "助監督",
@@ -104,7 +118,7 @@ export default function Home() {
   const categories = ["ALL", "PRODUCTION", "SHOOTING", "EDIT", "COLOR GRADING", "D.I.T"];
   
   const portfolioData: Project[] = [
-    { titles: { KR: "2025 FST 공식 데일리 티저", EN: "2025 FST official daily teaser", JP: "2025 FST 公式デイリーティーザー" }, roleKey: "role_edit", cats: ["EDIT"], link: "https://www.youtube.com/watch?v=uWRB7jJIdVI", thumbnail: "/fst.jpg" },
+    { titles: { KR: "2025 FST 공식 데일리 티저", EN: "2025 FST official daily teaser", JP: "2025 FST 公式デイリーティーザー" }, roleKey: "role_edit", cats: ["EDIT"], link: "https://youtu.be/uWRB7jJIdVI", thumbnail: "/fst.jpg" },
     { titles: { KR: "어쩌면 해피엔딩", EN: "Maybe Happy Ending", JP: "ひょっとしてハッピーエンヂィグ" }, roleKey: "role_on_set", cats: ["EDIT", "COLOR GRADING"], link: "#", thumbnail: "/MFLS.png" },
     { titles: { KR: "독친", EN: "Toxic Daughter", JP: "毒親" }, roleKey: "role_drone", cats: ["SHOOTING"], link: "#", thumbnail: "/Toxic.png" },
     { titles: { KR: "under your bed", EN: "under your bed", JP: "under your bed" }, roleKey: "role_dit", cats: ["D.I.T"], link: "#", thumbnail: "/UYB.jpeg" },
@@ -117,11 +131,11 @@ export default function Home() {
     { titles: { KR: "그릴리-정경호 CF (Shortform)", EN: "Grilly-Jung Kyung-ho Shortform CF", JP: "Grilly-チョン・ギョンホ ショートフォーム CM" }, roleKey: "role_production", cats: ["PRODUCTION"], link: "https://youtube.com/shorts/TNKk8ohUL1I", thumbnail: "https://img.youtube.com/vi/TNKk8ohUL1I/maxresdefault.jpg" },
     { titles: { KR: "KB다이렉트자동차보험-김연아 CF", EN: "KB Direct Car Insurance-Kim Yuna CF", JP: "KBダイレクト自動車保険-キム・ヨナ CM" }, roleKey: "role_production", cats: ["PRODUCTION"], link: "https://youtube.com/shorts/8YOYu1gh1tI", thumbnail: "https://img.youtube.com/vi/8YOYu1gh1tI/maxresdefault.jpg" },
     { titles: { KR: "펩시-채수빈 CF", EN: "Pepsi-Chae Soo-bin CF", JP: "ペプシ-チェ・スビン CM" }, roleKey: "role_pepsi", cats: ["D.I.T", "EDIT"], link: "https://www.youtube.com/watch?v=85w6KAXCl9I", thumbnail: "https://img.youtube.com/vi/85w6KAXCl9I/maxresdefault.jpg" },
-    { titles: { KR: "포켓몬카드-김효연,노혜성", EN: "Pokemon Card-Kim Hyo-yeon, Noh Hye-seong", JP: "ポケモンカード-キム・ヒョヨン, ノ・ヘソン" }, roleKey: "role_pepsi", cats: ["D.I.T"], link: "https://www.youtube.com/watch?v=DM4sNZUA-T0", thumbnail: "https://img.youtube.com/vi/DM4sNZUA-T0/maxresdefault.jpg" },
+    { titles: { KR: "포켓몬카드-김효연,노혜성", EN: "Pokemon Card-Kim Hyo-yeon, Noh Hye-seong", JP: "ポケモン카드-김효연, 노혜성" }, roleKey: "role_pepsi", cats: ["D.I.T"], link: "https://www.youtube.com/watch?v=DM4sNZUA-T0", thumbnail: "https://img.youtube.com/vi/DM4sNZUA-T0/maxresdefault.jpg" },
     { titles: { KR: "Heuhike 패션필름", EN: "Heuhike Fashion Film", JP: "Heuhike ファッションフィルム" }, roleKey: "role_color", cats: ["COLOR GRADING"], link: "https://www.youtube.com/watch?v=GrDRMbdkFfw", thumbnail: "https://img.youtube.com/vi/GrDRMbdkFfw/maxresdefault.jpg" },
     { titles: { KR: "깁스캠 - (주)윤진 홍보영상", EN: "GibbsCAM - Yoonjin Promo", JP: "GibbsCAM - ユンジン 広報映像" }, roleKey: "role_edit", cats: ["EDIT", "COLOR GRADING"], link: "https://youtu.be/EmZE-zBupZY", thumbnail: "https://img.youtube.com/vi/EmZE-zBupZY/maxresdefault.jpg" },
     { titles: { KR: "씨네큐-문래창작촌 홍보영상", EN: "CineQ-Mullae Art Village CF", JP: "CineQ-文来創作村 CM" }, roleKey: "role_production", cats: ["PRODUCTION"], link: "https://youtu.be/cMssFFhas4E", thumbnail: "https://img.youtube.com/vi/cMssFFhas4E/maxresdefault.jpg" },
-    { titles: { KR: "숏폼드라마-카모플라쥬", EN: "Short-form Drama: Camouflage", JP: "ショートフォームドラマ-カモフラージュ" }, roleKey: "role_shooting_color", cats: ["SHOOTING", "COLOR GRADING"], link: "#", thumbnail: "/카모플라쥬.png" },
+    { titles: { KR: "숏폼드라마-카모플라쥬", EN: "Short-form Drama: Camouflage", JP: "ショートフォームドラマ-카모플라쥬" }, roleKey: "role_shooting_color", cats: ["SHOOTING", "COLOR GRADING"], link: "#", thumbnail: "/카모플라쥬.png" },
     { titles: { KR: "숏폼드라마-계속 나를 망상해줘요", EN: "Short-form Drama: Keep Deluding Me", JP: "ショートフォームドラマ-私を妄想し続けて" }, roleKey: "role_color", cats: ["COLOR GRADING"], link: "#", thumbnail: "/망상1.png" },
     { titles: { KR: "숏폼드라마-이혼당한 공주님의 달콤한 재혼", EN: "Short-form Drama: Sweet Remarriage", JP: "ショートフォームドラマ-捨てられたお嬢様のスイートな彼" }, roleKey: "role_shooting_color", cats: ["SHOOTING", "COLOR GRADING"], link: "https://www.youtube.com/watch?v=UaGy-L3Ts6Q", thumbnail: "https://img.youtube.com/vi/UaGy-L3Ts6Q/maxresdefault.jpg" },
     { titles: { KR: "KBSN-리얼그린도시락패밀리", EN: "KBSN - Real Green Lunchbox Family", JP: "KBSN - リアルグリーンお弁当ファミリー" }, roleKey: "role_total_edit", cats: ["EDIT"], link: "#", thumbnail: "/도시락.png" },
@@ -132,7 +146,7 @@ export default function Home() {
     { titles: { KR: "현대엘리베이터ㅣ충주 스마트캠퍼스 - 디지털 투어", EN: "Hyundai Elevator Chungju Smart Campus - Digital Tour", JP: "現代エレベーターㅣ忠州スマートキャンパス - デジタルツアー" }, roleKey: "role_shooting", cats: ["SHOOTING"], link: "https://www.youtube.com/watch?v=rbV8okPYLO4", thumbnail: "https://img.youtube.com/vi/rbV8okPYLO4/maxresdefault.jpg" },
     { titles: { KR: "삼겹살입니다만", EN: "It's Samgyeopsal", JP: "サムギョプサルですが" }, roleKey: "role_rough_cut", cats: ["EDIT"], link: "#", thumbnail: "/삼겹살.jpg" },
     { titles: { KR: "가디언엔젤스코리아 스케치영상", EN: "Guardian Angels Korea Sketch Video", JP: "ガーディアンエンジェルス・コリア スケッチ映像" }, roleKey: "role_production", cats: ["PRODUCTION"], link: "https://youtu.be/msDcJcXktjQ", thumbnail: "https://img.youtube.com/vi/msDcJcXktjQ/maxresdefault.jpg" },
-    { titles: { KR: "킨더포레지니 영어유치원 홍보영상", EN: "Kinder Foret Genie English Kindergarten Promo", JP: "キンダーフォレジニ 英語幼稚園 広報映像" }, roleKey: "role_production", cats: ["PRODUCTION"], link: "https://youtu.be/jn_m8G7yQnA", thumbnail: "https://img.youtube.com/vi/jn_m8G7yQnA/maxresdefault.jpg" }
+    { titles: { KR: "킨더포레지니 영어유치원 홍보영상", EN: "Kinder Foret Genie English Kindergarten Promo", JP: "キンダーフォレ지니 英語幼稚園 広報映像" }, roleKey: "role_production", cats: ["PRODUCTION"], link: "https://youtu.be/jn_m8G7yQnA", thumbnail: "https://img.youtube.com/vi/jn_m8G7yQnA/maxresdefault.jpg" }
   ];
 
   return (
@@ -159,7 +173,7 @@ export default function Home() {
 
       <section id="expertise" className="expertise-section py-32 px-8 max-w-6xl mx-auto relative z-10 bg-black">
         <h2 className="text-4xl font-bold mb-20 border-b border-white/10 pb-4 uppercase tracking-widest italic text-white text-center">Our Spectrum</h2>
-        <div className="grid grid-cols-2 lg:grid-cols-3 gap-x-16 gap-y-24 text-left">
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-x-16 gap-y-24 text-left">
           {["production", "creative", "shooting", "edit", "color", "dit"].map((key) => (
             <div key={key} className="animate-item">
               <h3 className="text-2xl font-bold mb-6 text-cyan-400 italic tracking-wider uppercase border-l-2 border-cyan-400 pl-4">
@@ -178,9 +192,9 @@ export default function Home() {
             <button key={cat} onClick={() => setFilter(cat)} className={`text-xs tracking-[0.2em] uppercase transition-all ${filter === cat ? "text-cyan-400 border-b border-cyan-400" : "text-gray-400 hover:text-white"}`}>{cat}</button>
           ))}
         </div>
-        <div className="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 text-left px-4">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 text-left px-4">
           {portfolioData.filter(item => filter === "ALL" || item.cats.includes(filter)).map((item, idx) => (
-            <div key={idx} onClick={() => item.link !== "#" && setSelectedVideo(item.link)} className="group cursor-pointer">
+            <div key={`${filter}-${idx}`} onClick={() => item.link !== "#" && setSelectedVideo(item.link)} className="group cursor-pointer portfolio-item">
               <div className="relative w-full aspect-video mb-4 overflow-hidden border border-white/10 bg-zinc-950">
                 <div className="absolute inset-0 bg-cover bg-center scale-110 blur-md opacity-30 transition-transform duration-500 group-hover:scale-125" style={{ backgroundImage: `url(${item.thumbnail})` }} />
                 <div className="relative z-10 w-full h-full flex items-center justify-center p-1">
