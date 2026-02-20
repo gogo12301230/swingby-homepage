@@ -104,7 +104,7 @@ export default function Home() {
   const categories = ["ALL", "PRODUCTION", "SHOOTING", "EDIT", "COLOR GRADING", "D.I.T"];
   
   const portfolioData: Project[] = [
-    { titles: { KR: "2025 FST 공식 데일리 티저", EN: "2025 FST official daily teaser", JP: "2025 FST 公式デイリーティーザー" }, roleKey: "role_edit", cats: ["EDIT"], link: "https://youtu.be/5ckTO9U8zp8", thumbnail: "https://img.youtube.com/vi/5ckTO9U8zp8/maxresdefault.jpg" },
+    { titles: { KR: "2025 FST 공식 데일리 티저", EN: "2025 FST official daily teaser", JP: "2025 FST 公式デイリーティーザー" }, roleKey: "role_edit", cats: ["EDIT"], link: "https://www.youtube.com/watch?v=uWRB7jJIdVI", thumbnail: "/fst.jpg" },
     { titles: { KR: "어쩌면 해피엔딩", EN: "Maybe Happy Ending", JP: "ひょっとしてハッピーエンヂィグ" }, roleKey: "role_on_set", cats: ["EDIT", "COLOR GRADING"], link: "#", thumbnail: "/MFLS.png" },
     { titles: { KR: "독친", EN: "Toxic Daughter", JP: "毒親" }, roleKey: "role_drone", cats: ["SHOOTING"], link: "#", thumbnail: "/Toxic.png" },
     { titles: { KR: "under your bed", EN: "under your bed", JP: "under your bed" }, roleKey: "role_dit", cats: ["D.I.T"], link: "#", thumbnail: "/UYB.jpeg" },
