@@ -72,7 +72,7 @@ export default function Home() {
       });
 
       if (res.ok) {
-        alert(lang === "KR" ? "메시지를 보냈어! 곧 확인할게." : lang === "JP" ? "メッセージを送りました！すぐに確認します。" : "Message sent! I'll check it soon.");
+        alert(lang === "KR" ? "메일을 보냈습니다." : lang === "JP" ? "メッセージを送りました！すぐに確認します。" : "Message sent! I'll check it soon.");
         setFormData({ name: "", phone: "", email: "", message: "" });
       } else {
         alert("Error!");
