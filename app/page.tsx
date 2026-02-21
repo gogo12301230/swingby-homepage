@@ -24,7 +24,6 @@ export default function Home() {
   const [selectedVideo, setSelectedVideo] = useState<string | null>(null);
 
   useEffect(() => {
-    // 1. Our Spectrum 애니메이션 (기존)
     gsap.from(".expertise-section h2, .animate-item", {
       scrollTrigger: {
         trigger: ".expertise-section",
@@ -37,7 +36,6 @@ export default function Home() {
       stagger: 0.2,
     });
 
-    // 2. Works 섹션 애니메이션 추가
     gsap.from(".portfolio-item", {
       scrollTrigger: {
         trigger: "#portfolio",
@@ -50,7 +48,7 @@ export default function Home() {
       stagger: 0.1,
       ease: "power2.out"
     });
-  }, [lang, filter]); // 필터 바뀔 때마다 다시 실행되게 filter 추가
+  }, [lang, filter]);
 
   const scrollToSection = (id: string) => {
     gsap.to(window, {
@@ -62,6 +60,26 @@ export default function Home() {
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
+  };
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    try {
+      const res = await fetch("/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(formData),
+      });
+
+      if (res.ok) {
+        alert(lang === "KR" ? "메시지를 보냈어! 곧 확인할게." : lang === "JP" ? "メッセージを送りました！すぐに確認します。" : "Message sent! I'll check it soon.");
+        setFormData({ name: "", phone: "", email: "", message: "" });
+      } else {
+        alert("Error!");
+      }
+    } catch (err) {
+      alert("Error!");
+    }
   };
 
   const getYoutubeId = (url: string) => {
@@ -222,7 +240,7 @@ export default function Home() {
         <div className="max-w-3xl mx-auto">
           <h2 className="text-4xl font-bold mb-8 uppercase tracking-widest italic text-white">Contact Us</h2>
           <p className="text-cyan-400 mb-12 text-xl tracking-tighter font-semibold">{t[lang].contact_msg}</p>
-          <form className="grid grid-cols-1 md:grid-cols-2 gap-6 text-left" onSubmit={(e) => e.preventDefault()}>
+          <form className="grid grid-cols-1 md:grid-cols-2 gap-6 text-left" onSubmit={handleSubmit}>
             <div><label className="text-xs uppercase tracking-widest text-gray-300 mb-2 block">{t[lang].form_name}</label><input type="text" name="name" required value={formData.name} onChange={handleChange} className="w-full bg-white/5 border border-white/10 px-4 py-3 text-base text-white focus:border-cyan-500 outline-none transition-colors" /></div>
             <div><label className="text-xs uppercase tracking-widest text-gray-300 mb-2 block">{t[lang].form_phone}</label><input type="text" name="phone" required value={formData.phone} onChange={handleChange} className="w-full bg-white/5 border border-white/10 px-4 py-3 text-base text-white focus:border-cyan-500 outline-none transition-colors" /></div>
             <div className="md:col-span-2"><label className="text-xs uppercase tracking-widest text-gray-300 mb-2 block">{t[lang].form_email}</label><input type="email" name="email" required value={formData.email} onChange={handleChange} className="w-full bg-white/5 border border-white/10 px-4 py-3 text-base text-white focus:border-cyan-500 outline-none transition-colors" /></div>
