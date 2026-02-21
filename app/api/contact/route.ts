@@ -12,7 +12,7 @@ export async function POST(req: Request) {
       pass: process.env.EMAIL_PASS,
     },
   });
-
+  console.log(process.env.EMAIL_USER)
   try {
     await transporter.sendMail({
       from: email,
