@@ -138,7 +138,7 @@ export default function Home() {
   const portfolioData: Project[] = [
     { titles: { KR: "2025 FST 공식 데일리 티저", EN: "2025 FST official daily teaser", JP: "2025 FST 公式デイリーティーザー" }, roleKey: "role_edit", cats: ["EDIT"], link: "https://youtu.be/uWRB7jJIdVI", thumbnail: "/fst.jpg" },
     { titles: { KR: "어쩌면 해피엔딩", EN: "Maybe Happy Ending", JP: "ひょっとしてハッピーエンヂィグ" }, roleKey: "role_on_set", cats: ["EDIT", "COLOR GRADING"], link: "#", thumbnail: "/MFLS.png" },
-    { titles: { KR: "독친", EN: "Toxic Daughter", JP: "毒親" }, roleKey: "role_drone", cats: ["SHOOTING"], link: "#", thumbnail: "/Toxic.png" },
+    { titles: { KR: "독친", EN: "Toxic Parents", JP: "毒親" }, roleKey: "role_drone", cats: ["SHOOTING"], link: "#", thumbnail: "/Toxic.png" },
     { titles: { KR: "under your bed", EN: "under your bed", JP: "under your bed" }, roleKey: "role_dit", cats: ["D.I.T"], link: "#", thumbnail: "/UYB.jpeg" },
     { titles: { KR: "6시간 후 너는 죽는다", EN: "You Will Die in 6 Hours", JP: "6時間後に君は死ぬ" }, roleKey: "role_dit", cats: ["D.I.T"], link: "#", thumbnail: "/6hours.jpeg" },
     { titles: { KR: "루프", EN: "The Loop", JP: "ループ" }, roleKey: "role_dit", cats: ["D.I.T"], link: "#", thumbnail: "/Loop.jpeg" },
