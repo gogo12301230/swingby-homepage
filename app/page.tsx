@@ -165,7 +165,10 @@ export default function Home() {
     { titles: { KR: "삼겹살입니다만", EN: "It's Samgyeopsal", JP: "サムギョプサルですが" }, roleKey: "role_rough_cut", cats: ["EDIT"], link: "#", thumbnail: "/삼겹살.jpg" },
     { titles: { KR: "가디언엔젤스코리아 스케치영상", EN: "Guardian Angels Korea Sketch Video", JP: "ガーディアンエンジェルス・コリア スケッチ映像" }, roleKey: "role_production", cats: ["PRODUCTION"], link: "https://youtu.be/msDcJcXktjQ", thumbnail: "https://img.youtube.com/vi/msDcJcXktjQ/maxresdefault.jpg" },
     { titles: { KR: "킨더포레지니 영어유치원 홍보영상", EN: "Kinder Foret　Genie English Kindergarten Promo", JP: "キンダーフォレジニ 英語幼稚園 広報映像" }, roleKey: "role_production", cats: ["PRODUCTION"], link: "https://youtu.be/jn_m8G7yQnA", thumbnail: "https://img.youtube.com/vi/jn_m8G7yQnA/maxresdefault.jpg" },
-    { titles: { KR: "NiziU - 'Dear...' 뮤직비디오", EN: "NiziU - 'Dear...' Music Video", JP: "NiziU - 'Dear...' ミュージックビデオ" }, roleKey: "role_dit", cats: ["D.I.T"], link: "https://www.youtube.com/watch?v=59dVIJn0q78", thumbnail: "https://img.youtube.com/vi/59dVIJn0q78/maxresdefault.jpg" }
+    { titles: { KR: "NiziU - 'Dear...' 뮤직비디오", EN: "NiziU - 'Dear...' Music Video", JP: "NiziU - 'Dear...' ミュージックビデオ" }, roleKey: "role_dit", cats: ["D.I.T"], link: "https://www.youtube.com/watch?v=59dVIJn0q78", thumbnail: "https://img.youtube.com/vi/59dVIJn0q78/maxresdefault.jpg" },
+    { titles: { KR: "너드랩소디", EN: "Nerd Rhapsody", JP: "ナードラプソディ" }, roleKey: "role_dit", cats: ["D.I.T"], link: "#", thumbnail: "/swingbyicon.png" },
+    { titles: { KR: "유령의집", EN: "The Haunted House", JP: "ゴーストハウス" }, roleKey: "role_dit", cats: ["D.I.T"], link: "#", thumbnail: "/swingbyicon.png" },
+    { titles: { KR: "I HEAR YOU", EN: "I Hear You", JP: "I HEAR YOU" }, roleKey: "role_dit", cats: ["D.I.T"], link: "#", thumbnail: "/swingbyicon.png" }
   ];
 
   return (
