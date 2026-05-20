@@ -101,7 +101,7 @@ export default function Home() {
       role_edit: "편집", role_on_set: "현장편집 / 색보정", role_drone: "드론", role_dit: "D.I.T", role_complex: "D.I.T / 편집 / 색보정",
       role_making: "메이킹 필름", role_production: "제작", role_pepsi: "현장편집 / D.I.T", role_color: "색보정",
       role_shooting_color: "촬영 / 색보정", role_total_edit: "종합편집", role_assistant_director: "조감독",
-      role_shooting: "촬영", role_rough_cut: "가편집"
+      role_shooting: "촬영", role_rough_cut: "가편집", role_edit_color: "편집 / 색보정"
     },
     JP: {
       production: "企画からポストまで、 映像のすべての旅に寄り添い、 一つの世界を完成させます。",
@@ -115,7 +115,7 @@ export default function Home() {
       role_edit: "編集", role_on_set: "現場編集 / カラーグレーディング", role_drone: "ドローン", role_dit: "D.I.T", role_complex: "D.I.T / 編集 / カラーグレーディング",
       role_making: "メイキング映像", role_production: "制作", role_pepsi: "現場編集 / D.I.T", role_color: "カラーグレーディング",
       role_shooting_color: "撮影 / カラーグレーディング", role_total_edit: "総合編集", role_assistant_director: "助監督",
-      role_shooting: "撮影", role_rough_cut: "仮編集"
+      role_shooting: "撮影", role_rough_cut: "仮編集", role_edit_color: "編集 / カラーグレーディング"
     },
     EN: {
       production: "From vision to final frame, we navigate the entire journey to build a complete world.",
@@ -129,7 +129,7 @@ export default function Home() {
       role_edit: "EDIT", role_on_set: "ON-SET EDIT / COLOR GRADING", role_drone: "DRONE", role_dit: "D.I.T", role_complex: "D.I.T / EDIT / COLOR GRADING",
       role_making: "MAKING FILM", role_production: "PRODUCTION", role_pepsi: "ON-SET EDIT / D.I.T", role_color: "COLOR GRADING",
       role_shooting_color: "CINEMATOGRAPHY / COLOR GRADING", role_total_edit: "TOTAL EDIT", role_assistant_director: "ASSISTANT DIRECTOR",
-      role_shooting: "CINEMATOGRAPHY", role_rough_cut: "ROUGH CUT"
+      role_shooting: "CINEMATOGRAPHY", role_rough_cut: "ROUGH CUT", role_edit_color: "EDIT / COLOR GRADING"
     }
   };
 
@@ -151,7 +151,7 @@ export default function Home() {
     { titles: { KR: "펩시-채수빈 CF", EN: "Pepsi-Chae Soo-bin CF", JP: "ペプシ-チェ・スビン CM" }, roleKey: "role_pepsi", cats: ["D.I.T", "EDIT"], link: "https://www.youtube.com/watch?v=85w6KAXCl9I", thumbnail: "https://img.youtube.com/vi/85w6KAXCl9I/maxresdefault.jpg" },
     { titles: { KR: "포켓몬카드-김효연,노혜성", EN: "Pokemon Card-Kim Hyo-yeon, Noh Hye-seong", JP: "ポケモンカード - キム・ヒョヨン, ノ・ヘソン" }, roleKey: "role_pepsi", cats: ["D.I.T"], link: "https://www.youtube.com/watch?v=DM4sNZUA-T0", thumbnail: "https://img.youtube.com/vi/DM4sNZUA-T0/maxresdefault.jpg" },
     { titles: { KR: "Heuhike 패션필름", EN: "Heuhike Fashion Film", JP: "Heuhike ファッションフィルム" }, roleKey: "role_color", cats: ["COLOR GRADING"], link: "https://www.youtube.com/watch?v=GrDRMbdkFfw", thumbnail: "https://img.youtube.com/vi/GrDRMbdkFfw/maxresdefault.jpg" },
-    { titles: { KR: "깁스캠 - (주)윤진 홍보영상", EN: "GibbsCAM - Yoonjin Promo", JP: "GibbsCAM - ユンジン 広報映像" }, roleKey: "role_edit", cats: ["EDIT", "COLOR GRADING"], link: "https://youtu.be/EmZE-zBupZY", thumbnail: "https://img.youtube.com/vi/EmZE-zBupZY/maxresdefault.jpg" },
+    { titles: { KR: "깁스캠 - (주)윤진 홍보영상", EN: "GibbsCAM - Yoonjin Promo", JP: "GibbsCAM - ユンジン 広報映像" }, roleKey: "role_edit_color", cats: ["EDIT", "COLOR GRADING"], link: "https://youtu.be/EmZE-zBupZY", thumbnail: "https://img.youtube.com/vi/EmZE-zBupZY/maxresdefault.jpg" },
     { titles: { KR: "씨네큐-문래창작촌 홍보영상", EN: "CineQ-Mullae Art Village CF", JP: "CineQ-文来創作村 CM" }, roleKey: "role_production", cats: ["PRODUCTION"], link: "https://youtu.be/cMssFFhas4E", thumbnail: "https://img.youtube.com/vi/cMssFFhas4E/maxresdefault.jpg" },
     { titles: { KR: "숏폼드라마-카모플라쥬", EN: "Short-form Drama: Camouflage", JP: "ショートフォームドラマ-カモフラージュ" }, roleKey: "role_shooting_color", cats: ["SHOOTING", "COLOR GRADING"], link: "#", thumbnail: "/카모플라쥬.png" },
     { titles: { KR: "숏폼드라마-계속 나를 망상해줘요", EN: "Short-form Drama: Keep Deluding Me", JP: "ショートフォームドラマ-私を妄想し続けて" }, roleKey: "role_color", cats: ["COLOR GRADING"], link: "#", thumbnail: "/망상1.png" },
