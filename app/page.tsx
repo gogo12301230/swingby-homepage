@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useEffect } from "react";
+import Image from "next/image";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { ScrollToPlugin } from "gsap/ScrollToPlugin";
@@ -24,31 +25,45 @@ export default function Home() {
   const [selectedVideo, setSelectedVideo] = useState<string | null>(null);
 
   useEffect(() => {
-    gsap.from(".expertise-section h2, .animate-item", {
-      scrollTrigger: {
-        trigger: ".expertise-section",
-        start: "top 90%",
-        end: "top 60%",
-        scrub: 1.5,
-      },
-      opacity: 0,
-      y: 100,
-      stagger: 0.2,
+    const ctx = gsap.context(() => {
+      gsap.from(".expertise-section h2, .animate-item", {
+        scrollTrigger: {
+          trigger: ".expertise-section",
+          start: "top 90%",
+          end: "top 60%",
+          scrub: 1.5,
+        },
+        opacity: 0,
+        y: 100,
+        stagger: 0.2,
+      });
+
+      gsap.from(".portfolio-item", {
+        scrollTrigger: {
+          trigger: "#portfolio",
+          start: "top 85%",
+          toggleActions: "play none none none",
+        },
+        opacity: 0,
+        y: 50,
+        duration: 0.8,
+        stagger: 0.1,
+        ease: "power2.out"
+      });
     });
 
-    gsap.from(".portfolio-item", {
-      scrollTrigger: {
-        trigger: "#portfolio",
-        start: "top 85%",
-        toggleActions: "play none none none",
-      },
-      opacity: 0,
-      y: 50,
-      duration: 0.8,
-      stagger: 0.1,
-      ease: "power2.out"
-    });
+    return () => ctx.revert();
   }, [lang, filter]);
+
+  useEffect(() => {
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.key === "Escape") {
+        setSelectedVideo(null);
+      }
+    };
+    window.addEventListener("keydown", handleKeyDown);
+    return () => window.removeEventListener("keydown", handleKeyDown);
+  }, []);
 
   const scrollToSection = (id: string) => {
     gsap.to(window, {
@@ -220,7 +235,14 @@ export default function Home() {
               <div className="relative w-full aspect-video mb-4 overflow-hidden border border-white/10 bg-zinc-950">
                 <div className="absolute inset-0 bg-cover bg-center scale-110 blur-md opacity-30 transition-transform duration-500 group-hover:scale-125" style={{ backgroundImage: `url(${item.thumbnail})` }} />
                 <div className="relative z-10 w-full h-full flex items-center justify-center p-1">
-                  <img src={item.thumbnail} className="max-w-full max-h-full object-contain drop-shadow-2xl transition-transform duration-500 group-hover:scale-[1.02]" alt={item.titles[lang]} />
+                  <Image
+                    src={item.thumbnail}
+                    alt={item.titles[lang] || "Portfolio Thumbnail"}
+                    fill
+                    sizes="(max-width: 768px) 50vw, (max-width: 1024px) 33vw, 25vw"
+                    priority={idx < 4}
+                    className="object-contain drop-shadow-2xl transition-transform duration-500 group-hover:scale-[1.02]"
+                  />
                 </div>
                 {item.link !== "#" && <div className="absolute inset-0 z-20 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity bg-black/10"><div className="w-12 h-12 border border-white/50 flex items-center justify-center rounded-full bg-black/40 backdrop-blur-sm shadow-xl">▶</div></div>}
               </div>
@@ -232,9 +254,9 @@ export default function Home() {
       </section>
 
       {selectedVideo && (
-        <div className="fixed inset-0 z-[100] bg-black/95 flex items-center justify-center p-4 md:p-12">
-          <button onClick={() => setSelectedVideo(null)} className="absolute top-8 right-8 text-3xl hover:text-cyan-400">✕</button>
-          <div className="w-full max-w-6xl aspect-video bg-black shadow-2xl">
+        <div onClick={() => setSelectedVideo(null)} className="fixed inset-0 z-[100] bg-black/95 flex items-center justify-center p-4 md:p-12 cursor-pointer">
+          <button onClick={() => setSelectedVideo(null)} className="absolute top-8 right-8 text-3xl hover:text-cyan-400 z-50">✕</button>
+          <div onClick={(e) => e.stopPropagation()} className="w-full max-w-6xl aspect-video bg-black shadow-2xl cursor-default">
             <iframe src={`https://www.youtube.com/embed/${getYoutubeId(selectedVideo)}?autoplay=1`} className="w-full h-full" allow="autoplay; encrypted-media; picture-in-picture" allowFullScreen></iframe>
           </div>
         </div>
