@@ -151,7 +151,7 @@ export default function Home() {
   const categories = ["ALL", "PRODUCTION", "SHOOTING", "EDIT", "COLOR GRADING", "D.I.T"];
   
   const portfolioData: Project[] = [
-    { titles: { KR: "Valorant CM SHINPAI MUYOU", EN: "Valorant CM SHINPAI MUYOU", JP: "Valorant CM SHINPAI MUYOU" }, roleKey: "role_shooting_3rd_assistant", cats: ["SHOOTING"], link: "https://www.youtube.com/watch?v=NrSUELYnt0s", thumbnail: "https://img.youtube.com/vi/NrSUELYnt0s/maxresdefault.jpg" },
+    { titles: { KR: "발로란트 CM SHINPAI MUYOU", EN: "VALORANT CM SHINPAI MUYOU", JP: "VALORANT CM 心配無用" }, roleKey: "role_shooting_3rd_assistant", cats: ["SHOOTING"], link: "https://www.youtube.com/watch?v=NrSUELYnt0s", thumbnail: "https://img.youtube.com/vi/NrSUELYnt0s/maxresdefault.jpg" },
     { titles: { KR: "2025 FST 공식 데일리 티저", EN: "2025 FST official daily teaser", JP: "2025 FST 公式デイリーティーザー" }, roleKey: "role_edit", cats: ["EDIT"], link: "https://youtu.be/uWRB7jJIdVI", thumbnail: "/fst.jpg" },
     { titles: { KR: "어쩌면 해피엔딩", EN: "Maybe Happy Ending", JP: "たぶんハッピーエンド" }, roleKey: "role_on_set", cats: ["EDIT", "COLOR GRADING"], link: "#", thumbnail: "/MFLS.png" },
     { titles: { KR: "독친", EN: "Toxic Parents", JP: "毒親" }, roleKey: "role_drone", cats: ["SHOOTING"], link: "#", thumbnail: "/Toxic.png" },
