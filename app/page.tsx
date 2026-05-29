@@ -188,16 +188,21 @@ export default function Home() {
   ];
 
   return (
-    <main className="min-h-screen bg-black text-white font-sans overflow-x-hidden text-center">
-      <nav className="fixed top-0 w-full z-50 flex justify-between items-center px-8 py-6">
-        <div className="text-xl font-bold tracking-tighter italic cursor-pointer" onClick={() => scrollToSection('#hero')}>SWINGBY</div>
+    <main className="min-h-screen bg-[#0a0714] text-white font-sans overflow-x-hidden text-center relative">
+      {/* Mystical Space Nebula Glows */}
+      <div className="absolute top-[10%] left-[-15%] w-[60vw] h-[60vw] rounded-full bg-purple-900/10 blur-[130px] pointer-events-none z-0" />
+      <div className="absolute top-[40%] right-[-15%] w-[50vw] h-[50vw] rounded-full bg-amber-900/5 blur-[150px] pointer-events-none z-0" />
+      <div className="absolute bottom-[5%] left-[5%] w-[60vw] h-[60vw] rounded-full bg-violet-950/10 blur-[180px] pointer-events-none z-0" />
+
+      <nav className="fixed top-0 w-full z-50 flex justify-between items-center px-8 py-6 bg-[#0a0714]/40 backdrop-blur-lg border-b border-white/5">
+        <div className="text-xl font-bold tracking-tighter italic cursor-pointer hover:text-purple-400 transition-colors" onClick={() => scrollToSection('#hero')}>SWINGBY</div>
         <div className="absolute left-1/2 -translate-x-1/2 flex gap-4 text-[10px] tracking-widest font-bold bg-black/20 backdrop-blur-md px-4 py-2 rounded-full border border-white/5">
           {["KR", "JP", "EN"].map((l) => (
-            <button key={l} onClick={() => setLang(l)} className={`transition-colors ${lang === l ? "text-cyan-400" : "text-gray-400 hover:text-white"}`}>{l}</button>
+            <button key={l} onClick={() => setLang(l)} className={`transition-colors ${lang === l ? "text-purple-400" : "text-gray-400 hover:text-white"}`}>{l}</button>
           ))}
         </div>
         <div className="flex text-xs font-medium tracking-[0.2em] uppercase">
-          <button onClick={() => scrollToSection('#contact')} className="hover:text-cyan-400 transition-colors drop-shadow-md">Contact Us</button>
+          <button onClick={() => scrollToSection('#contact')} className="hover:text-purple-400 transition-colors drop-shadow-md">Contact Us</button>
         </div>
       </nav>
 
@@ -209,12 +214,12 @@ export default function Home() {
         </div>
       </section>
 
-      <section id="expertise" className="expertise-section py-32 px-8 max-w-6xl mx-auto relative z-10 bg-black">
+      <section id="expertise" className="expertise-section py-32 px-8 max-w-6xl mx-auto relative z-10 bg-transparent">
         <h2 className="text-4xl font-bold mb-20 border-b border-white/10 pb-4 uppercase tracking-widest italic text-white text-center">Our Spectrum</h2>
         <div className="grid grid-cols-2 lg:grid-cols-3 gap-x-16 gap-y-24 text-left">
           {["production", "creative", "shooting", "edit", "color", "dit"].map((key) => (
             <div key={key} className="animate-item">
-              <h3 className="text-2xl font-bold mb-6 text-cyan-400 italic tracking-wider uppercase border-l-2 border-cyan-400 pl-4">
+              <h3 className="text-2xl font-bold mb-6 text-purple-400 italic tracking-wider uppercase border-l-2 border-purple-400 pl-4">
                 {key === 'production' ? 'Production' : key === 'creative' ? 'Creative' : key === 'shooting' ? 'Shooting' : key === 'edit' ? 'Edit' : key === 'color' ? 'Color Grading' : 'D.I.T'}
               </h3>
               <p className="text-gray-200 leading-relaxed text-base font-normal">{t[lang][key]}</p>
@@ -223,17 +228,17 @@ export default function Home() {
         </div>
       </section>
 
-      <section id="portfolio" className="py-32 px-4 max-w-full mx-auto bg-black border-t border-white/5 text-center">
+      <section id="portfolio" className="py-32 px-4 max-w-full mx-auto bg-transparent border-t border-white/5 text-center">
         <h2 className="text-4xl font-bold mb-12 uppercase tracking-widest italic text-white">Works</h2>
         <div className="flex flex-wrap justify-center gap-6 mb-16 px-4">
           {categories.map((cat) => (
-            <button key={cat} onClick={() => setFilter(cat)} className={`text-xs tracking-[0.2em] uppercase transition-all ${filter === cat ? "text-cyan-400 border-b border-cyan-400" : "text-gray-400 hover:text-white"}`}>{cat}</button>
+            <button key={cat} onClick={() => setFilter(cat)} className={`text-xs tracking-[0.2em] uppercase transition-all ${filter === cat ? "text-purple-400 border-b border-purple-400" : "text-gray-400 hover:text-white"}`}>{cat}</button>
           ))}
         </div>
         <div className="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 text-left px-4">
           {portfolioData.filter(item => filter === "ALL" || item.cats.includes(filter)).map((item, idx) => (
-            <div key={`${filter}-${idx}`} onClick={() => item.link !== "#" && setSelectedVideo(item.link)} className="group cursor-pointer portfolio-item">
-              <div className="relative w-full aspect-video mb-4 overflow-hidden border border-white/10 bg-zinc-950">
+            <div key={`${filter}-${idx}`} onClick={() => item.link !== "#" && setSelectedVideo(item.link)} className="group cursor-pointer portfolio-item transition-all duration-300 hover:-translate-y-1">
+              <div className="relative w-full aspect-video mb-4 overflow-hidden border border-white/5 bg-zinc-950/40 backdrop-blur-sm rounded-lg shadow-lg group-hover:border-purple-500/30 transition-all duration-300 group-hover:shadow-[0_0_30px_rgba(168,85,247,0.15)]">
                 <div className="absolute inset-0 bg-cover bg-center scale-110 blur-md opacity-30 transition-transform duration-500 group-hover:scale-125" style={{ backgroundImage: `url(${item.thumbnail})` }} />
                 <div className="relative z-10 w-full h-full flex items-center justify-center p-1">
                   <Image
@@ -245,9 +250,9 @@ export default function Home() {
                     className="object-contain drop-shadow-2xl transition-transform duration-500 group-hover:scale-[1.02]"
                   />
                 </div>
-                {item.link !== "#" && <div className="absolute inset-0 z-20 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity bg-black/10"><div className="w-12 h-12 border border-white/50 flex items-center justify-center rounded-full bg-black/40 backdrop-blur-sm shadow-xl">▶</div></div>}
+                {item.link !== "#" && <div className="absolute inset-0 z-20 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-300 bg-purple-950/20 backdrop-blur-[2px]"><div className="w-12 h-12 border border-purple-400/40 flex items-center justify-center rounded-full bg-purple-900/60 backdrop-blur-sm shadow-[0_0_20px_rgba(168,85,247,0.4)] text-purple-200 text-sm hover:scale-110 transition-transform">▶</div></div>}
               </div>
-              <h4 className="text-lg font-bold uppercase group-hover:text-cyan-400 transition-colors text-gray-100">{item.titles[lang]}</h4>
+              <h4 className="text-lg font-bold uppercase group-hover:text-purple-400 transition-colors text-gray-100">{item.titles[lang]}</h4>
               <p className="text-[13px] text-[#94a3b8] uppercase tracking-[0.2em] mt-2 font-medium">{t[lang][item.roleKey]}</p>
             </div>
           ))}
@@ -256,27 +261,27 @@ export default function Home() {
 
       {selectedVideo && (
         <div onClick={() => setSelectedVideo(null)} className="fixed inset-0 z-[100] bg-black/95 flex items-center justify-center p-4 md:p-12 cursor-pointer">
-          <button onClick={() => setSelectedVideo(null)} className="absolute top-8 right-8 text-3xl hover:text-cyan-400 z-50">✕</button>
+          <button onClick={() => setSelectedVideo(null)} className="absolute top-8 right-8 text-3xl hover:text-purple-400 z-50">✕</button>
           <div onClick={(e) => e.stopPropagation()} className="w-full max-w-6xl aspect-video bg-black shadow-2xl cursor-default">
             <iframe src={`https://www.youtube.com/embed/${getYoutubeId(selectedVideo)}?autoplay=1`} className="w-full h-full" allow="autoplay; encrypted-media; picture-in-picture" allowFullScreen></iframe>
           </div>
         </div>
       )}
 
-      <section id="contact" className="py-32 px-8 bg-black border-t border-white/5 text-center">
+      <section id="contact" className="py-32 px-8 bg-transparent border-t border-white/5 text-center">
         <div className="max-w-3xl mx-auto">
           <h2 className="text-4xl font-bold mb-8 uppercase tracking-widest italic text-white">Contact Us</h2>
-          <p className="text-cyan-400 mb-12 text-xl tracking-tighter font-semibold">{t[lang].contact_msg}</p>
+          <p className="text-purple-400 mb-12 text-xl tracking-tighter font-semibold">{t[lang].contact_msg}</p>
           <form className="grid grid-cols-1 md:grid-cols-2 gap-6 text-left" onSubmit={handleSubmit}>
-            <div><label className="text-xs uppercase tracking-widest text-gray-300 mb-2 block">{t[lang].form_name}</label><input type="text" name="name" required value={formData.name} onChange={handleChange} className="w-full bg-white/5 border border-white/10 px-4 py-3 text-base text-white focus:border-cyan-500 outline-none transition-colors" /></div>
-            <div><label className="text-xs uppercase tracking-widest text-gray-300 mb-2 block">{t[lang].form_phone}</label><input type="text" name="phone" required value={formData.phone} onChange={handleChange} className="w-full bg-white/5 border border-white/10 px-4 py-3 text-base text-white focus:border-cyan-500 outline-none transition-colors" /></div>
-            <div className="md:col-span-2"><label className="text-xs uppercase tracking-widest text-gray-300 mb-2 block">{t[lang].form_email}</label><input type="email" name="email" required value={formData.email} onChange={handleChange} className="w-full bg-white/5 border border-white/10 px-4 py-3 text-base text-white focus:border-cyan-500 outline-none transition-colors" /></div>
-            <div className="md:col-span-2"><label className="text-xs uppercase tracking-widest text-gray-300 mb-2 block">{t[lang].form_msg}</label><textarea name="message" rows={5} required value={formData.message} onChange={handleChange} className="w-full bg-white/5 border border-white/10 px-4 py-3 text-base text-white focus:border-cyan-500 outline-none transition-colors resize-none"></textarea></div>
-            <div className="md:col-span-2 text-center mt-4"><button type="submit" className="px-12 py-4 bg-white text-black text-xs font-bold uppercase tracking-[0.3em] hover:bg-cyan-500 hover:text-white transition-all">{t[lang].form_send}</button></div>
+            <div><label className="text-xs uppercase tracking-widest text-gray-300 mb-2 block">{t[lang].form_name}</label><input type="text" name="name" required value={formData.name} onChange={handleChange} className="w-full bg-white/5 border border-white/10 px-4 py-3 text-base text-white focus:border-purple-500 outline-none transition-colors" /></div>
+            <div><label className="text-xs uppercase tracking-widest text-gray-300 mb-2 block">{t[lang].form_phone}</label><input type="text" name="phone" required value={formData.phone} onChange={handleChange} className="w-full bg-white/5 border border-white/10 px-4 py-3 text-base text-white focus:border-purple-500 outline-none transition-colors" /></div>
+            <div className="md:col-span-2"><label className="text-xs uppercase tracking-widest text-gray-300 mb-2 block">{t[lang].form_email}</label><input type="email" name="email" required value={formData.email} onChange={handleChange} className="w-full bg-white/5 border border-white/10 px-4 py-3 text-base text-white focus:border-purple-500 outline-none transition-colors" /></div>
+            <div className="md:col-span-2"><label className="text-xs uppercase tracking-widest text-gray-300 mb-2 block">{t[lang].form_msg}</label><textarea name="message" rows={5} required value={formData.message} onChange={handleChange} className="w-full bg-white/5 border border-white/10 px-4 py-3 text-base text-white focus:border-purple-500 outline-none transition-colors resize-none"></textarea></div>
+            <div className="md:col-span-2 text-center mt-4"><button type="submit" className="px-12 py-4 bg-white text-black text-xs font-bold uppercase tracking-[0.3em] hover:bg-gradient-to-r hover:from-purple-500 hover:to-amber-500 hover:text-white transition-all shadow-[0_0_20px_rgba(168,85,247,0.15)] hover:shadow-[0_0_30px_rgba(245,158,11,0.4)] border border-transparent">{t[lang].form_send}</button></div>
           </form>
         </div>
       </section>
-      <div className="h-[20vh] bg-black" />
+      <div className="h-[20vh] bg-transparent" />
     </main>
   );
 }
