@@ -222,14 +222,14 @@ export default function Home() {
       <div className="absolute top-[40%] right-[-15%] w-[50vw] h-[50vw] rounded-full bg-amber-900/5 blur-[150px] pointer-events-none z-0" />
       <div className="absolute bottom-[5%] left-[5%] w-[60vw] h-[60vw] rounded-full bg-violet-950/10 blur-[180px] pointer-events-none z-0" />
 
-      <nav className="fixed top-0 w-full z-50 flex justify-between items-center px-8 py-6 bg-[#0a0714]/40 backdrop-blur-lg border-b border-white/5">
-        <div className="text-xl font-bold tracking-tighter italic cursor-pointer hover:text-purple-400 transition-colors" onClick={() => scrollToSection('#hero')}>SWINGBY</div>
-        <div className="absolute left-1/2 -translate-x-1/2 flex gap-4 text-[10px] tracking-widest font-bold bg-black/20 backdrop-blur-md px-4 py-2 rounded-full border border-white/5">
+      <nav className="fixed top-0 w-full z-50 flex justify-between items-center px-8 py-6 bg-[#0a0714]/40 backdrop-blur-lg border-b border-white/5 font-display">
+        <div className="text-xl font-bold tracking-tighter italic cursor-pointer hover:text-purple-400 transition-colors font-display" onClick={() => scrollToSection('#hero')}>SWINGBY</div>
+        <div className="absolute left-1/2 -translate-x-1/2 flex gap-4 text-[10px] tracking-widest font-bold bg-black/20 backdrop-blur-md px-4 py-2 rounded-full border border-white/5 font-display">
           {["KR", "JP", "EN"].map((l) => (
             <button key={l} onClick={() => setLang(l)} className={`transition-colors ${lang === l ? "text-purple-400" : "text-gray-400 hover:text-white"}`}>{l}</button>
           ))}
         </div>
-        <div className="flex text-xs font-medium tracking-[0.2em] uppercase">
+        <div className="flex text-xs font-medium tracking-[0.2em] uppercase font-display">
           <button onClick={() => scrollToSection('#contact')} className="hover:text-purple-400 transition-colors drop-shadow-md">Contact Us</button>
         </div>
       </nav>
@@ -237,17 +237,17 @@ export default function Home() {
       <section id="hero" className="relative w-full overflow-hidden bg-black aspect-video">
         <div className="relative w-full h-full z-0" style={{ backgroundImage: "url('/뒷면_compressed.jpg')", backgroundSize: 'cover', backgroundPosition: 'center', WebkitMaskImage: 'linear-gradient(to bottom, black 85%, transparent 100%)', maskImage: 'linear-gradient(to bottom, black 85%, transparent 100%)' }} />
         <div className="absolute inset-0 flex flex-col justify-center items-center z-10 text-center px-4">
-          <h1 className="text-[12vw] font-black leading-none uppercase tracking-tighter italic drop-shadow-[0_10px_30px_rgba(0,0,0,1)] text-white">Swingby</h1>
-          <p className="mt-4 text-2xl font-extrabold tracking-[0.3em] uppercase drop-shadow-[0_4px_15px_rgba(0,0,0,0.9)] text-white">Production</p>
+          <h1 className="text-[12vw] font-black leading-none uppercase tracking-tighter italic drop-shadow-[0_10px_30px_rgba(0,0,0,1)] text-white font-display">Swingby</h1>
+          <p className="mt-4 text-2xl font-extrabold tracking-[0.3em] uppercase drop-shadow-[0_4px_15px_rgba(0,0,0,0.9)] text-white font-display">Production</p>
         </div>
       </section>
 
       <section id="expertise" className="expertise-section py-32 px-8 max-w-6xl mx-auto relative z-10 bg-transparent">
-        <h2 className="text-4xl font-bold mb-20 border-b border-white/10 pb-4 uppercase tracking-widest italic text-white text-center">Our Spectrum</h2>
+        <h2 className="text-4xl font-bold mb-20 border-b border-white/10 pb-4 uppercase tracking-widest italic text-white text-center font-display">Our Spectrum</h2>
         <div className="grid grid-cols-2 lg:grid-cols-3 gap-x-16 gap-y-24 text-left">
           {["production", "creative", "shooting", "edit", "color", "dit"].map((key) => (
             <div key={key} className="animate-item">
-              <h3 className="text-2xl font-bold mb-6 text-purple-400 italic tracking-wider uppercase border-l-2 border-purple-400 pl-4">
+              <h3 className="text-2xl font-bold mb-6 text-purple-400 italic tracking-wider uppercase border-l-2 border-purple-400 pl-4 font-display">
                 {key === 'production' ? 'Production' : key === 'creative' ? 'Creative' : key === 'shooting' ? 'Shooting' : key === 'edit' ? 'Edit' : key === 'color' ? 'Color Grading' : 'D.I.T'}
               </h3>
               <p className="text-gray-200 leading-relaxed text-base font-normal">{t[lang][key]}</p>
@@ -257,10 +257,10 @@ export default function Home() {
       </section>
 
       <section id="portfolio" className="py-32 px-4 max-w-full mx-auto bg-transparent border-t border-white/5 text-center">
-        <h2 className="text-4xl font-bold mb-12 uppercase tracking-widest italic text-white">Works</h2>
+        <h2 className="text-4xl font-bold mb-12 uppercase tracking-widest italic text-white font-display">Works</h2>
         <div className="flex flex-wrap justify-center gap-6 mb-16 px-4">
           {categories.map((cat) => (
-            <button key={cat} onClick={() => setFilter(cat)} className={`text-xs tracking-[0.2em] uppercase transition-all ${filter === cat ? "text-purple-400 border-b border-purple-400" : "text-gray-400 hover:text-white"}`}>{cat}</button>
+            <button key={cat} onClick={() => setFilter(cat)} className={`text-xs tracking-[0.2em] uppercase transition-all font-display ${filter === cat ? "text-purple-400 border-b border-purple-400" : "text-gray-400 hover:text-white"}`}>{cat}</button>
           ))}
         </div>
         <div className="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 text-left px-4">
@@ -298,14 +298,14 @@ export default function Home() {
 
       <section id="contact" className="py-32 px-8 bg-transparent border-t border-white/5 text-center">
         <div className="max-w-3xl mx-auto">
-          <h2 className="text-4xl font-bold mb-8 uppercase tracking-widest italic text-white">Contact Us</h2>
-          <p className="text-purple-400 mb-12 text-xl tracking-tighter font-semibold">{t[lang].contact_msg}</p>
+          <h2 className="text-4xl font-bold mb-8 uppercase tracking-widest italic text-white font-display">Contact Us</h2>
+          <p className="text-purple-400 mb-12 text-xl tracking-tighter font-semibold font-display">{t[lang].contact_msg}</p>
           <form className="grid grid-cols-1 md:grid-cols-2 gap-6 text-left" onSubmit={handleSubmit}>
-            <div><label className="text-xs uppercase tracking-widest text-gray-300 mb-2 block">{t[lang].form_name}</label><input type="text" name="name" required value={formData.name} onChange={handleChange} className="w-full bg-white/5 border border-white/10 px-4 py-3 text-base text-white focus:border-purple-500 outline-none transition-colors" /></div>
-            <div><label className="text-xs uppercase tracking-widest text-gray-300 mb-2 block">{t[lang].form_phone}</label><input type="text" name="phone" required value={formData.phone} onChange={handleChange} className="w-full bg-white/5 border border-white/10 px-4 py-3 text-base text-white focus:border-purple-500 outline-none transition-colors" /></div>
-            <div className="md:col-span-2"><label className="text-xs uppercase tracking-widest text-gray-300 mb-2 block">{t[lang].form_email}</label><input type="email" name="email" required value={formData.email} onChange={handleChange} className="w-full bg-white/5 border border-white/10 px-4 py-3 text-base text-white focus:border-purple-500 outline-none transition-colors" /></div>
-            <div className="md:col-span-2"><label className="text-xs uppercase tracking-widest text-gray-300 mb-2 block">{t[lang].form_msg}</label><textarea name="message" rows={5} required value={formData.message} onChange={handleChange} className="w-full bg-white/5 border border-white/10 px-4 py-3 text-base text-white focus:border-purple-500 outline-none transition-colors resize-none"></textarea></div>
-            <div className="md:col-span-2 text-center mt-4"><button type="submit" className="px-12 py-4 bg-white text-black text-xs font-bold uppercase tracking-[0.3em] hover:bg-gradient-to-r hover:from-purple-500 hover:to-amber-500 hover:text-white transition-all shadow-[0_0_20px_rgba(168,85,247,0.15)] hover:shadow-[0_0_30px_rgba(245,158,11,0.4)] border border-transparent">{t[lang].form_send}</button></div>
+            <div><label className="text-xs uppercase tracking-widest text-gray-300 mb-2 block font-display">{t[lang].form_name}</label><input type="text" name="name" required value={formData.name} onChange={handleChange} className="w-full bg-white/5 border border-white/10 px-4 py-3 text-base text-white focus:border-purple-500 outline-none transition-colors" /></div>
+            <div><label className="text-xs uppercase tracking-widest text-gray-300 mb-2 block font-display">{t[lang].form_phone}</label><input type="text" name="phone" required value={formData.phone} onChange={handleChange} className="w-full bg-white/5 border border-white/10 px-4 py-3 text-base text-white focus:border-purple-500 outline-none transition-colors" /></div>
+            <div className="md:col-span-2"><label className="text-xs uppercase tracking-widest text-gray-300 mb-2 block font-display">{t[lang].form_email}</label><input type="email" name="email" required value={formData.email} onChange={handleChange} className="w-full bg-white/5 border border-white/10 px-4 py-3 text-base text-white focus:border-purple-500 outline-none transition-colors" /></div>
+            <div className="md:col-span-2"><label className="text-xs uppercase tracking-widest text-gray-300 mb-2 block font-display">{t[lang].form_msg}</label><textarea name="message" rows={5} required value={formData.message} onChange={handleChange} className="w-full bg-white/5 border border-white/10 px-4 py-3 text-base text-white focus:border-purple-500 outline-none transition-colors resize-none"></textarea></div>
+            <div className="md:col-span-2 text-center mt-4"><button type="submit" className="px-12 py-4 bg-white text-black text-xs font-bold uppercase tracking-[0.3em] hover:bg-gradient-to-r hover:from-purple-500 hover:to-amber-500 hover:text-white transition-all shadow-[0_0_20px_rgba(168,85,247,0.15)] hover:shadow-[0_0_30px_rgba(245,158,11,0.4)] border border-transparent font-display">{t[lang].form_send}</button></div>
           </form>
         </div>
       </section>
