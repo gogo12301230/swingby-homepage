@@ -223,7 +223,7 @@ export default function Home() {
       <div className="absolute bottom-[5%] left-[5%] w-[60vw] h-[60vw] rounded-full bg-violet-950/10 blur-[180px] pointer-events-none z-0" />
 
       <nav className="fixed top-0 w-full z-50 flex justify-between items-center px-8 py-6 bg-[#0a0714]/40 backdrop-blur-lg border-b border-white/5 font-display">
-        <div className="text-xl font-bold tracking-tighter italic cursor-pointer hover:text-purple-400 transition-colors font-display" onClick={() => scrollToSection('#hero')}>SWINGBY</div>
+        <div className="text-xl font-bold tracking-tighter italic cursor-pointer hover:text-purple-400 transition-colors font-display select-none" onClick={() => scrollToSection('#hero')}>SWINGBY</div>
         <div className="absolute left-1/2 -translate-x-1/2 flex gap-4 text-[10px] tracking-widest font-bold bg-black/20 backdrop-blur-md px-4 py-2 rounded-full border border-white/5 font-display">
           {["KR", "JP", "EN"].map((l) => (
             <button key={l} onClick={() => setLang(l)} className={`transition-colors ${lang === l ? "text-purple-400" : "text-gray-400 hover:text-white"}`}>{l}</button>
@@ -236,9 +236,9 @@ export default function Home() {
 
       <section id="hero" className="relative w-full overflow-hidden bg-black aspect-video">
         <div className="relative w-full h-full z-0" style={{ backgroundImage: "url('/뒷면_compressed.jpg')", backgroundSize: 'cover', backgroundPosition: 'center', WebkitMaskImage: 'linear-gradient(to bottom, black 85%, transparent 100%)', maskImage: 'linear-gradient(to bottom, black 85%, transparent 100%)' }} />
-        <div className="absolute inset-0 flex flex-col justify-center items-center z-10 text-center px-4">
-          <h1 className="text-[12vw] font-black leading-none uppercase tracking-tighter italic drop-shadow-[0_10px_30px_rgba(0,0,0,1)] text-white font-display">Swingby</h1>
-          <p className="mt-4 text-2xl font-extrabold tracking-[0.3em] uppercase drop-shadow-[0_4px_15px_rgba(0,0,0,0.9)] text-white font-display">Production</p>
+        <div className="absolute inset-0 flex flex-col justify-center items-center z-10 text-center px-4 select-none">
+          <h1 className="text-[12vw] font-black leading-none uppercase tracking-tighter italic drop-shadow-[0_10px_30px_rgba(0,0,0,1)] text-white font-display select-none">Swingby</h1>
+          <p className="mt-4 text-2xl font-extrabold tracking-[0.3em] uppercase drop-shadow-[0_4px_15px_rgba(0,0,0,0.9)] text-white font-display select-none">Production</p>
         </div>
       </section>
 
