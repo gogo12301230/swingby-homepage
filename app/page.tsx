@@ -38,22 +38,50 @@ export default function Home() {
         stagger: 0.2,
       });
 
-      gsap.from(".portfolio-item", {
+      gsap.from("#portfolio h2, #portfolio .flex, #portfolio .grid", {
         scrollTrigger: {
           trigger: "#portfolio",
-          start: "top 85%",
+          start: "top 90%",
           toggleActions: "play none none none",
         },
         opacity: 0,
-        y: 50,
-        duration: 0.8,
-        stagger: 0.1,
-        ease: "power2.out"
+        y: 30,
+        duration: 0.6,
+        ease: "power2.out",
+        clearProps: "all"
       });
     });
 
     return () => ctx.revert();
-  }, [lang, filter]);
+  }, [lang]);
+
+  useEffect(() => {
+    // Snappy, beautiful animation when filter/language changes
+    const ctx = gsap.context(() => {
+      gsap.fromTo(".portfolio-item", 
+        { opacity: 0, y: 20 },
+        { 
+          opacity: 1, 
+          y: 0, 
+          duration: 0.4, 
+          stagger: 0.03, // fast, responsive staggered fade-in
+          ease: "power2.out", 
+          clearProps: "all",
+          overwrite: "auto"
+        }
+      );
+    });
+
+    // Let ScrollTrigger recalculate the scroll heights after React finished rendering new grid height
+    const timer = setTimeout(() => {
+      ScrollTrigger.refresh();
+    }, 100);
+
+    return () => {
+      ctx.revert();
+      clearTimeout(timer);
+    };
+  }, [filter, lang]);
 
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
@@ -153,8 +181,8 @@ export default function Home() {
   const portfolioData: Project[] = [
     { titles: { KR: "발로란트 CM SHINPAI MUYOU", EN: "VALORANT CM SHINPAI MUYOU", JP: "VALORANT CM 心配無用" }, roleKey: "role_shooting_3rd_assistant", cats: ["SHOOTING"], link: "https://www.youtube.com/watch?v=NrSUELYnt0s", thumbnail: "https://img.youtube.com/vi/NrSUELYnt0s/maxresdefault.jpg" },
     { titles: { KR: "2025 FST 공식 데일리 티저", EN: "2025 FST official daily teaser", JP: "2025 FST 公式デイリーティーザー" }, roleKey: "role_edit", cats: ["EDIT"], link: "https://youtu.be/uWRB7jJIdVI", thumbnail: "/fst.jpg" },
-    { titles: { KR: "어쩌면 해피엔딩", EN: "Maybe Happy Ending", JP: "たぶんハッピーエンド" }, roleKey: "role_on_set", cats: ["EDIT", "COLOR GRADING"], link: "#", thumbnail: "/MFLS.png" },
-    { titles: { KR: "독친", EN: "Toxic Parents", JP: "毒親" }, roleKey: "role_drone", cats: ["SHOOTING"], link: "#", thumbnail: "/Toxic.png" },
+    { titles: { KR: "어쩌면 해피엔딩", EN: "Maybe Happy Ending", JP: "たぶんハッピーエンド" }, roleKey: "role_on_set", cats: ["EDIT", "COLOR GRADING"], link: "#", thumbnail: "/MFLS_compressed.jpg" },
+    { titles: { KR: "독친", EN: "Toxic Parents", JP: "毒親" }, roleKey: "role_drone", cats: ["SHOOTING"], link: "#", thumbnail: "/Toxic_compressed.jpg" },
     { titles: { KR: "under your bed", EN: "under your bed", JP: "under your bed" }, roleKey: "role_dit", cats: ["D.I.T"], link: "#", thumbnail: "/UYB.jpeg" },
     { titles: { KR: "6시간 후 너는 죽는다", EN: "You Will Die in 6 Hours", JP: "6時間後に君は死ぬ" }, roleKey: "role_dit", cats: ["D.I.T"], link: "#", thumbnail: "/6hours.jpeg" },
     { titles: { KR: "루프", EN: "The Loop", JP: "ループ" }, roleKey: "role_dit", cats: ["D.I.T"], link: "#", thumbnail: "/Loop.jpeg" },
@@ -172,7 +200,7 @@ export default function Home() {
     { titles: { KR: "숏폼드라마-카모플라쥬", EN: "Short-form Drama: Camouflage", JP: "ショートフォームドラマ-カモフラージュ" }, roleKey: "role_shooting_color", cats: ["SHOOTING", "COLOR GRADING"], link: "#", thumbnail: "/카모플라쥬.png" },
     { titles: { KR: "숏폼드라마-계속 나를 망상해줘요", EN: "Short-form Drama: Keep Deluding Me", JP: "ショートフォームドラマ-私を妄想し続けて" }, roleKey: "role_color", cats: ["COLOR GRADING"], link: "#", thumbnail: "/망상1.png" },
     { titles: { KR: "숏폼드라마-이혼당한 공주님의 달콤한 재혼", EN: "Short-form Drama: The Divorced Princess's Sweet Remarriage", JP: "ショートフォームドラマ-捨てられたお嬢様のスイートな彼" }, roleKey: "role_shooting", cats: ["SHOOTING"], link: "https://www.youtube.com/watch?v=UaGy-L3Ts6Q", thumbnail: "https://img.youtube.com/vi/UaGy-L3Ts6Q/maxresdefault.jpg" },
-    { titles: { KR: "KBSN-리얼그린도시락패밀리", EN: "KBSN - Real Green Lunchbox Family", JP: "KBSN - リアルグリーンお弁当ファミリー" }, roleKey: "role_total_edit", cats: ["EDIT"], link: "#", thumbnail: "/도시락.png" },
+    { titles: { KR: "KBSN-리얼그린도시락패밀리", EN: "KBSN - Real Green Lunchbox Family", JP: "KBSN - リアルグリーンお弁当ファミリー" }, roleKey: "role_total_edit", cats: ["EDIT"], link: "#", thumbnail: "/도시락_compressed.jpg" },
     { titles: { KR: "TicToc-Irene 굿즈행사 스케치영상", EN: "TicToc-Irene Goods Event Sketch", JP: "TicToc-Irene グッズイベント スケッチ映像" }, roleKey: "role_production", cats: ["PRODUCTION"], link: "https://youtu.be/dYPIjBO7W6w", thumbnail: "/틱톡.jpg" },
     { titles: { KR: "[MV]The Bowls-Mr.Love", EN: "[MV]The Bowls-Mr.Love", JP: "[MV]The Bowls-Mr.Love" }, roleKey: "role_assistant_director", cats: ["PRODUCTION"], link: "https://www.youtube.com/watch?v=fCF-7ZW7KNQ", thumbnail: "https://img.youtube.com/vi/fCF-7ZW7KNQ/maxresdefault.jpg" },
     { titles: { KR: "[MV]MAX-Old Fashion (Feat. Young ill)", EN: "[MV]MAX-Old Fashion (Feat. Young ill)", JP: "[MV]MAX-Old Fashion (Feat. Young ill)" }, roleKey: "role_color", cats: ["COLOR GRADING"], link: "https://www.youtube.com/watch?v=kwIS8Q0MHyk", thumbnail: "https://img.youtube.com/vi/kwIS8Q0MHyk/maxresdefault.jpg" },
