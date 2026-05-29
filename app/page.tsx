@@ -202,7 +202,7 @@ export default function Home() {
       </nav>
 
       <section id="hero" className="relative w-full overflow-hidden bg-black aspect-square">
-        <div className="relative w-full h-full z-0" style={{ backgroundImage: "url('/hero-bg.png')", backgroundSize: 'cover', backgroundPosition: 'center', WebkitMaskImage: 'linear-gradient(to bottom, black 85%, transparent 100%)', maskImage: 'linear-gradient(to bottom, black 85%, transparent 100%)' }} />
+        <div className="relative w-full h-full z-0" style={{ backgroundImage: "url('/뒷면.png')", backgroundSize: 'cover', backgroundPosition: 'center', WebkitMaskImage: 'linear-gradient(to bottom, black 85%, transparent 100%)', maskImage: 'linear-gradient(to bottom, black 85%, transparent 100%)' }} />
         <div className="absolute inset-0 flex flex-col justify-center items-center z-10 text-center px-4">
           <h1 className="text-[12vw] font-black leading-none uppercase tracking-tighter italic drop-shadow-[0_10px_30px_rgba(0,0,0,1)] text-white">Swingby</h1>
           <p className="mt-4 text-2xl font-extrabold tracking-[0.3em] uppercase drop-shadow-[0_4px_15px_rgba(0,0,0,0.9)] text-white">Production</p>
