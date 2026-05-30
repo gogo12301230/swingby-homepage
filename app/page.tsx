@@ -234,7 +234,7 @@ export default function Home() {
         </div>
       </nav>
 
-      <section id="hero" className="relative w-full overflow-hidden bg-black aspect-video">
+      <section id="hero" className="relative w-full overflow-hidden bg-[#0a0714] aspect-video">
         <div className="relative w-full h-full z-0" style={{ backgroundImage: "url('/뒷면_compressed.jpg')", backgroundSize: 'cover', backgroundPosition: 'center', WebkitMaskImage: 'linear-gradient(to bottom, black 85%, transparent 100%)', maskImage: 'linear-gradient(to bottom, black 85%, transparent 100%)' }} />
         <div className="absolute inset-0 flex flex-col justify-center items-center z-10 text-center px-4 select-none">
           <h1 className="text-[12vw] font-black leading-none uppercase tracking-tighter italic drop-shadow-[0_10px_30px_rgba(0,0,0,1)] text-white font-display select-none">Swingby</h1>
