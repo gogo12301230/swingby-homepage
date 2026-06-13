@@ -144,7 +144,7 @@ export default function Home() {
       role_edit: "편집", role_on_set: "현장편집 / 색보정", role_drone: "드론", role_dit: "D.I.T", role_complex: "D.I.T / 편집 / 색보정",
       role_making: "메이킹 필름", role_production: "제작", role_pepsi: "현장편집 / D.I.T", role_color: "색보정",
       role_shooting_color: "촬영 / 색보정", role_total_edit: "종합편집", role_assistant_director: "조감독",
-      role_shooting: "촬영", role_rough_cut: "가편집", role_edit_color: "편집 / 색보정", role_shooting_3rd_assistant: "촬영 3rd 조수"
+      role_shooting: "촬영", role_rough_cut: "가편집", role_edit_color: "편집 / 색보정", role_shooting_3rd_assistant: "촬영 3rd 조수", role_shooting_edit: "촬영 / 편집"
     },
     JP: {
       production: "企画からポストまで、 映像のすべての旅に寄り添い、 一つの世界を完成させます。",
@@ -158,7 +158,7 @@ export default function Home() {
       role_edit: "編集", role_on_set: "現場編集 / カラーグレーディング", role_drone: "ドローン", role_dit: "D.I.T", role_complex: "D.I.T / 編集 / カラーグレーディング",
       role_making: "メイキング映像", role_production: "制作", role_pepsi: "現場編集 / D.I.T", role_color: "カラーグレーディング",
       role_shooting_color: "撮影 / カラーグレーディング", role_total_edit: "総合編集", role_assistant_director: "助監督",
-      role_shooting: "撮影", role_rough_cut: "仮編集", role_edit_color: "編集 / カラーグレーディング", role_shooting_3rd_assistant: "撮影 3rd 助手"
+      role_shooting: "撮影", role_rough_cut: "仮編集", role_edit_color: "編集 / カラーグレーディング", role_shooting_3rd_assistant: "撮影 3rd 助手", role_shooting_edit: "撮影 / 編集"
     },
     EN: {
       production: "From vision to final frame, we navigate the entire journey to build a complete world.",
@@ -172,13 +172,14 @@ export default function Home() {
       role_edit: "EDIT", role_on_set: "ON-SET EDIT / COLOR GRADING", role_drone: "DRONE", role_dit: "D.I.T", role_complex: "D.I.T / EDIT / COLOR GRADING",
       role_making: "MAKING FILM", role_production: "PRODUCTION", role_pepsi: "ON-SET EDIT / D.I.T", role_color: "COLOR GRADING",
       role_shooting_color: "CINEMATOGRAPHY / COLOR GRADING", role_total_edit: "TOTAL EDIT", role_assistant_director: "ASSISTANT DIRECTOR",
-      role_shooting: "CINEMATOGRAPHY", role_rough_cut: "ROUGH CUT", role_edit_color: "EDIT / COLOR GRADING", role_shooting_3rd_assistant: "3RD ASSISTANT CAMERA"
+      role_shooting: "CINEMATOGRAPHY", role_rough_cut: "ROUGH CUT", role_edit_color: "EDIT / COLOR GRADING", role_shooting_3rd_assistant: "3RD ASSISTANT CAMERA", role_shooting_edit: "CINEMATOGRAPHY / EDIT"
     }
   };
 
   const categories = ["ALL", "PRODUCTION", "SHOOTING", "EDIT", "COLOR GRADING", "D.I.T"];
   
   const portfolioData: Project[] = [
+    { titles: { KR: "리얼월드 도쿄", EN: "Real World Tokyo", JP: "リアルワールド東京" }, roleKey: "role_shooting_edit", cats: ["SHOOTING", "EDIT"], link: "https://www.youtube.com/watch?v=Dd-6xObN1zU", thumbnail: "https://img.youtube.com/vi/Dd-6xObN1zU/maxresdefault.jpg" },
     { titles: { KR: "발로란트 CM SHINPAI MUYOU", EN: "VALORANT CM SHINPAI MUYOU", JP: "VALORANT CM 心配無用" }, roleKey: "role_shooting_3rd_assistant", cats: ["SHOOTING"], link: "https://www.youtube.com/watch?v=NrSUELYnt0s", thumbnail: "https://img.youtube.com/vi/NrSUELYnt0s/maxresdefault.jpg" },
     { titles: { KR: "2025 FST 공식 데일리 티저", EN: "2025 FST official daily teaser", JP: "2025 FST 公式デイリーティーザー" }, roleKey: "role_edit", cats: ["EDIT"], link: "https://youtu.be/uWRB7jJIdVI", thumbnail: "/fst.jpg" },
     { titles: { KR: "어쩌면 해피엔딩", EN: "Maybe Happy Ending", JP: "たぶんハッピーエンド" }, roleKey: "role_on_set", cats: ["EDIT", "COLOR GRADING"], link: "#", thumbnail: "/MFLS_compressed.jpg" },
