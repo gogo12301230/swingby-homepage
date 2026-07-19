@@ -181,6 +181,7 @@ export default function Home() {
   const categories = ["ALL", "PRODUCTION", "SHOOTING", "EDIT", "COLOR GRADING", "D.I.T"];
   
   const portfolioData: Project[] = [
+    { titles: { KR: "아무도 모르는", EN: "No One Knows", JP: "誰も知らない" }, roleKey: "role_color", cats: ["COLOR GRADING"], link: "#", thumbnail: "/no-one-knows.jpg" },
     { titles: { KR: "리얼월드 도쿄", EN: "Real World Tokyo", JP: "リアルワールド東京" }, roleKey: "role_shooting_edit", cats: ["SHOOTING", "EDIT"], link: "https://www.youtube.com/watch?v=Dd-6xObN1zU", thumbnail: "https://img.youtube.com/vi/Dd-6xObN1zU/maxresdefault.jpg" },
     { titles: { KR: "발로란트 CM SHINPAI MUYOU", EN: "VALORANT CM SHINPAI MUYOU", JP: "VALORANT CM 心配無用" }, roleKey: "role_shooting_3rd_assistant", cats: ["SHOOTING"], link: "https://www.youtube.com/watch?v=NrSUELYnt0s", thumbnail: "https://img.youtube.com/vi/NrSUELYnt0s/maxresdefault.jpg" },
     { titles: { KR: "2025 FST 공식 데일리 티저", EN: "2025 FST official daily teaser", JP: "2025 FST 公式デイリーティーザー" }, roleKey: "role_edit", cats: ["EDIT"], link: "https://youtu.be/uWRB7jJIdVI", thumbnail: "/fst.jpg" },
