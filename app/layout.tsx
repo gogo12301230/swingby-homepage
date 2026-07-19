@@ -26,7 +26,7 @@ export const metadata: Metadata = {
     siteName: "SwingByProduction",
     images: [
       {
-        url: "/뒷면.png", // public 폴더에 넣은 이미지 파일명과 일치해야 함
+        url: "/og-image.jpg", // 공유용 썸네일 (1200x630, 압축본)
         width: 1200,
         height: 630,
         alt: "SwingByProduction Thumbnail",

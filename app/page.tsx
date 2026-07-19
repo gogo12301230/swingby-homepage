@@ -15,8 +15,10 @@ interface Project {
   roleKey: string;
   cats: string[];
   link: string;
-  thumbnail: string;
+  thumbnail?: string; // 미개봉작 등 포스터가 없는 경우 생략 가능 (DEFAULT_THUMBNAIL로 대체됨)
 }
+
+const DEFAULT_THUMBNAIL = "/swingbyicon.png";
 
 export default function Home() {
   const [filter, setFilter] = useState("ALL");
@@ -211,9 +213,9 @@ export default function Home() {
     { titles: { KR: "가디언엔젤스코리아 스케치영상", EN: "Guardian Angels Korea Sketch Video", JP: "ガーディアンエンジェルス・コリア スケッチ映像" }, roleKey: "role_production", cats: ["PRODUCTION"], link: "https://youtu.be/msDcJcXktjQ", thumbnail: "https://img.youtube.com/vi/msDcJcXktjQ/maxresdefault.jpg" },
     { titles: { KR: "킨더포레지니 영어유치원 홍보영상", EN: "Kinder Foret　Genie English Kindergarten Promo", JP: "キンダーフォレジニ 英語幼稚園 広報映像" }, roleKey: "role_production", cats: ["PRODUCTION"], link: "https://youtu.be/jn_m8G7yQnA", thumbnail: "https://img.youtube.com/vi/jn_m8G7yQnA/maxresdefault.jpg" },
     { titles: { KR: "NiziU - 'Dear...' 뮤직비디오", EN: "NiziU - 'Dear...' Music Video", JP: "NiziU - 'Dear...' ミュージックビデオ" }, roleKey: "role_dit", cats: ["D.I.T"], link: "https://www.youtube.com/watch?v=59dVIJn0q78", thumbnail: "https://img.youtube.com/vi/59dVIJn0q78/maxresdefault.jpg" },
-    { titles: { KR: "너드랩소디", EN: "Nerd Rhapsody", JP: "ナードラプソディ" }, roleKey: "role_dit", cats: ["D.I.T"], link: "#", thumbnail: "/swingbyicon.png" },
-    { titles: { KR: "유령의집", EN: "The Haunted House", JP: "ゴーストハウス" }, roleKey: "role_dit", cats: ["D.I.T"], link: "#", thumbnail: "/swingbyicon.png" },
-    { titles: { KR: "I HEAR YOU", EN: "I Hear You", JP: "I HEAR YOU" }, roleKey: "role_dit", cats: ["D.I.T"], link: "#", thumbnail: "/swingbyicon.png" }
+    { titles: { KR: "너드랩소디", EN: "Nerd Rhapsody", JP: "ナードラプソディ" }, roleKey: "role_dit", cats: ["D.I.T"], link: "#" },
+    { titles: { KR: "유령의집", EN: "The Haunted House", JP: "ゴーストハウス" }, roleKey: "role_dit", cats: ["D.I.T"], link: "#" },
+    { titles: { KR: "I HEAR YOU", EN: "I Hear You", JP: "I HEAR YOU" }, roleKey: "role_dit", cats: ["D.I.T"], link: "#" }
   ];
 
   return (
@@ -268,10 +270,10 @@ export default function Home() {
           {portfolioData.filter(item => filter === "ALL" || item.cats.includes(filter)).map((item, idx) => (
             <div key={`${filter}-${idx}`} onClick={() => item.link !== "#" && setSelectedVideo(item.link)} className="group cursor-pointer portfolio-item transition-all duration-300 hover:-translate-y-1">
               <div className="relative w-full aspect-video mb-4 overflow-hidden border border-white/5 bg-zinc-950/40 backdrop-blur-sm rounded-lg shadow-lg group-hover:border-purple-500/30 transition-all duration-300 group-hover:shadow-[0_0_30px_rgba(168,85,247,0.15)]">
-                <div className="absolute inset-0 bg-cover bg-center scale-110 blur-md opacity-30 transition-transform duration-500 group-hover:scale-125" style={{ backgroundImage: `url(${item.thumbnail})` }} />
+                <div className="absolute inset-0 bg-cover bg-center scale-110 blur-md opacity-30 transition-transform duration-500 group-hover:scale-125" style={{ backgroundImage: `url(${item.thumbnail || DEFAULT_THUMBNAIL})` }} />
                 <div className="relative z-10 w-full h-full flex items-center justify-center p-1">
                   <Image
-                    src={item.thumbnail}
+                    src={item.thumbnail || DEFAULT_THUMBNAIL}
                     alt={item.titles[lang] || "Portfolio Thumbnail"}
                     fill
                     sizes="(max-width: 768px) 50vw, (max-width: 1024px) 33vw, 25vw"

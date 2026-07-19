@@ -39,3 +39,7 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# 미사용 원본 이미지 백업 (배포 제외)
+/_unused_backup
+/_backup_originals
