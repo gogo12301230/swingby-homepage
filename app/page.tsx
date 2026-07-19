@@ -233,7 +233,7 @@ export default function Home() {
       <div className="absolute top-[40%] right-[-15%] w-[50vw] h-[50vw] rounded-full bg-amber-900/5 blur-[150px] pointer-events-none z-0" />
       <div className="absolute bottom-[5%] left-[5%] w-[60vw] h-[60vw] rounded-full bg-violet-950/10 blur-[180px] pointer-events-none z-0" />
 
-      <nav className="fixed top-0 w-full z-50 flex justify-between items-center px-8 py-6 bg-[#0a0714]/40 backdrop-blur-lg border-b border-white/5 font-display">
+      <nav className="fixed top-0 w-full z-50 flex justify-between items-center px-8 py-6 bg-[#0a0714]/70 border-b border-white/5 font-display">
         <div className="text-xl font-bold tracking-tighter italic cursor-pointer hover:text-purple-400 transition-colors font-display select-none" onClick={() => scrollToSection('#hero')}>SWINGBY</div>
         <div className="absolute left-1/2 -translate-x-1/2 flex gap-4 text-[10px] tracking-widest font-bold bg-black/20 backdrop-blur-md px-4 py-2 rounded-full border border-white/5 font-display">
           {["KR", "JP", "EN"].map((l) => (
