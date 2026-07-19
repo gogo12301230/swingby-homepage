@@ -2,7 +2,17 @@ import { NextResponse } from "next/server";
 import nodemailer from "nodemailer";
 
 export async function POST(req: Request) {
-  const { name, phone, email, message } = await req.json();
+  const { name, phone, email, message, company } = await req.json();
+
+  // 스팸 봇 차단: 숨겨진 함정 필드(company)가 채워져 있으면 봇으로 간주
+  if (company) {
+    return NextResponse.json({ message: "ok" }, { status: 200 });
+  }
+
+  // 필수 값 검증
+  if (!name || !email || !message) {
+    return NextResponse.json({ message: "필수 항목이 비어 있습니다." }, { status: 400 });
+  }
 
   // Gmail 기준으로 작성했어. 다른 서비스면 host 설정을 바꿔야 해.
   const transporter = nodemailer.createTransport({

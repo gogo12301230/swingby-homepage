@@ -16,6 +16,7 @@ interface Project {
   cats: string[];
   link: string;
   thumbnail?: string; // 미개봉작 등 포스터가 없는 경우 생략 가능 (DEFAULT_THUMBNAIL로 대체됨)
+  comingSoon?: boolean; // 개봉 전 작품이면 true → 카드에 COMING SOON 뱃지 표시
 }
 
 const DEFAULT_THUMBNAIL = "/swingbyicon.png";
@@ -23,7 +24,8 @@ const DEFAULT_THUMBNAIL = "/swingbyicon.png";
 export default function Home() {
   const [filter, setFilter] = useState("ALL");
   const [lang, setLang] = useState("KR");
-  const [formData, setFormData] = useState({ name: "", phone: "", email: "", message: "" });
+  const [formData, setFormData] = useState({ name: "", phone: "", email: "", message: "", company: "" });
+  const [formStatus, setFormStatus] = useState<"idle" | "sending" | "success" | "error">("idle");
   const [selectedVideo, setSelectedVideo] = useState<string | null>(null);
 
   useEffect(() => {
@@ -109,6 +111,8 @@ export default function Home() {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    if (formStatus === "sending") return;
+    setFormStatus("sending");
     try {
       const res = await fetch("/api/contact", {
         method: "POST",
@@ -117,13 +121,13 @@ export default function Home() {
       });
 
       if (res.ok) {
-        alert(lang === "KR" ? "메일을 보냈습니다." : lang === "JP" ? "メッセージを送りました！すぐに確認します。" : "Message sent! I'll check it soon.");
-        setFormData({ name: "", phone: "", email: "", message: "" });
+        setFormStatus("success");
+        setFormData({ name: "", phone: "", email: "", message: "", company: "" });
       } else {
-        alert("Error!");
+        setFormStatus("error");
       }
-    } catch (err) {
-      alert("Error!");
+    } catch {
+      setFormStatus("error");
     }
   };
 
@@ -143,6 +147,7 @@ export default function Home() {
       dit: "당신이 머릿속에 그린 이미지를 현장의 모니터 위로 생생하게 피워냅니다.",
       contact_msg: "모든 궤도를 넘어 당신에게로",
       form_name: "이름", form_phone: "연락처", form_email: "이메일 주소", form_msg: "내용", form_send: "SEND",
+      form_sending: "전송 중...", form_success: "메일을 보냈습니다. 빠르게 확인할게요!", form_error: "전송에 실패했습니다. 잠시 후 다시 시도해주세요.",
       role_edit: "편집", role_on_set: "현장편집 / 색보정", role_drone: "드론", role_dit: "D.I.T", role_complex: "D.I.T / 편집 / 색보정",
       role_making: "메이킹 필름", role_production: "제작", role_pepsi: "현장편집 / D.I.T", role_color: "색보정",
       role_shooting_color: "촬영 / 색보정", role_total_edit: "종합편집", role_assistant_director: "조감독",
@@ -157,6 +162,7 @@ export default function Home() {
       dit: "あなたが頭の中に描いたイメージを、 現場のモニターに鮮やかに咲かせます。",
       contact_msg: "すべての軌道を超えて、 あなたのもとへ",
       form_name: "お名前", form_phone: "電話番号", form_email: "メールアドレス", form_msg: "内容", form_send: "SEND",
+      form_sending: "送信中...", form_success: "メッセージを送りました！すぐに確認します。", form_error: "送信に失敗しました。しばらくしてからもう一度お試しください。",
       role_edit: "編集", role_on_set: "現場編集 / カラーグレーディング", role_drone: "ドローン", role_dit: "D.I.T", role_complex: "D.I.T / 編集 / カラーグレーディング",
       role_making: "メイキング映像", role_production: "制作", role_pepsi: "現場編集 / D.I.T", role_color: "カラーグレーディング",
       role_shooting_color: "撮影 / カラーグレーディング", role_total_edit: "総合編集", role_assistant_director: "助監督",
@@ -171,6 +177,7 @@ export default function Home() {
       dit: "Bringing the images in your mind to vivid life on the on-site monitor.",
       contact_msg: "Beyond every orbit, towards you",
       form_name: "Name", form_phone: "Phone", form_email: "Email", form_msg: "Message", form_send: "SEND",
+      form_sending: "Sending...", form_success: "Message sent! We'll get back to you soon.", form_error: "Failed to send. Please try again later.",
       role_edit: "EDIT", role_on_set: "ON-SET EDIT / COLOR GRADING", role_drone: "DRONE", role_dit: "D.I.T", role_complex: "D.I.T / EDIT / COLOR GRADING",
       role_making: "MAKING FILM", role_production: "PRODUCTION", role_pepsi: "ON-SET EDIT / D.I.T", role_color: "COLOR GRADING",
       role_shooting_color: "CINEMATOGRAPHY / COLOR GRADING", role_total_edit: "TOTAL EDIT", role_assistant_director: "ASSISTANT DIRECTOR",
@@ -181,7 +188,7 @@ export default function Home() {
   const categories = ["ALL", "PRODUCTION", "SHOOTING", "EDIT", "COLOR GRADING", "D.I.T"];
   
   const portfolioData: Project[] = [
-    { titles: { KR: "아무도 모르는", EN: "No One Knows", JP: "誰も知らない" }, roleKey: "role_color", cats: ["COLOR GRADING"], link: "#", thumbnail: "/no-one-knows.jpg" },
+    { titles: { KR: "아무도 모르는", EN: "No One Knows", JP: "誰も知らない" }, roleKey: "role_color", cats: ["COLOR GRADING"], link: "#", thumbnail: "/no-one-knows.jpg", comingSoon: true },
     { titles: { KR: "리얼월드 도쿄", EN: "Real World Tokyo", JP: "リアルワールド東京" }, roleKey: "role_shooting_edit", cats: ["SHOOTING", "EDIT"], link: "https://www.youtube.com/watch?v=Dd-6xObN1zU", thumbnail: "https://img.youtube.com/vi/Dd-6xObN1zU/maxresdefault.jpg" },
     { titles: { KR: "발로란트 CM SHINPAI MUYOU", EN: "VALORANT CM SHINPAI MUYOU", JP: "VALORANT CM 心配無用" }, roleKey: "role_shooting_3rd_assistant", cats: ["SHOOTING"], link: "https://www.youtube.com/watch?v=NrSUELYnt0s", thumbnail: "https://img.youtube.com/vi/NrSUELYnt0s/maxresdefault.jpg" },
     { titles: { KR: "2025 FST 공식 데일리 티저", EN: "2025 FST official daily teaser", JP: "2025 FST 公式デイリーティーザー" }, roleKey: "role_edit", cats: ["EDIT"], link: "https://youtu.be/uWRB7jJIdVI", thumbnail: "/fst.jpg" },
@@ -214,9 +221,9 @@ export default function Home() {
     { titles: { KR: "가디언엔젤스코리아 스케치영상", EN: "Guardian Angels Korea Sketch Video", JP: "ガーディアンエンジェルス・コリア スケッチ映像" }, roleKey: "role_production", cats: ["PRODUCTION"], link: "https://youtu.be/msDcJcXktjQ", thumbnail: "https://img.youtube.com/vi/msDcJcXktjQ/maxresdefault.jpg" },
     { titles: { KR: "킨더포레지니 영어유치원 홍보영상", EN: "Kinder Foret　Genie English Kindergarten Promo", JP: "キンダーフォレジニ 英語幼稚園 広報映像" }, roleKey: "role_production", cats: ["PRODUCTION"], link: "https://youtu.be/jn_m8G7yQnA", thumbnail: "https://img.youtube.com/vi/jn_m8G7yQnA/maxresdefault.jpg" },
     { titles: { KR: "NiziU - 'Dear...' 뮤직비디오", EN: "NiziU - 'Dear...' Music Video", JP: "NiziU - 'Dear...' ミュージックビデオ" }, roleKey: "role_dit", cats: ["D.I.T"], link: "https://www.youtube.com/watch?v=59dVIJn0q78", thumbnail: "https://img.youtube.com/vi/59dVIJn0q78/maxresdefault.jpg" },
-    { titles: { KR: "너드랩소디", EN: "Nerd Rhapsody", JP: "ナードラプソディ" }, roleKey: "role_dit", cats: ["D.I.T"], link: "#" },
-    { titles: { KR: "유령의집", EN: "The Haunted House", JP: "ゴーストハウス" }, roleKey: "role_dit", cats: ["D.I.T"], link: "#" },
-    { titles: { KR: "I HEAR YOU", EN: "I Hear You", JP: "I HEAR YOU" }, roleKey: "role_dit", cats: ["D.I.T"], link: "#" }
+    { titles: { KR: "너드랩소디", EN: "Nerd Rhapsody", JP: "ナードラプソディ" }, roleKey: "role_dit", cats: ["D.I.T"], link: "#", comingSoon: true },
+    { titles: { KR: "유령의집", EN: "The Haunted House", JP: "ゴーストハウス" }, roleKey: "role_dit", cats: ["D.I.T"], link: "#", comingSoon: true },
+    { titles: { KR: "I HEAR YOU", EN: "I Hear You", JP: "I HEAR YOU" }, roleKey: "role_dit", cats: ["D.I.T"], link: "#", comingSoon: true }
   ];
 
   return (
@@ -282,6 +289,7 @@ export default function Home() {
                     className="object-contain drop-shadow-2xl transition-transform duration-500 group-hover:scale-[1.02]"
                   />
                 </div>
+                {item.comingSoon && <div className="absolute top-3 right-3 z-20 px-3 py-1 text-[9px] tracking-[0.25em] font-bold bg-purple-950/70 border border-purple-400/40 rounded-full text-purple-200 backdrop-blur-sm font-display select-none">COMING SOON</div>}
                 {item.link !== "#" && <div className="absolute inset-0 z-20 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-300 bg-purple-950/20 backdrop-blur-[2px]"><div className="w-12 h-12 border border-purple-400/40 flex items-center justify-center rounded-full bg-purple-900/60 backdrop-blur-sm shadow-[0_0_20px_rgba(168,85,247,0.4)] text-purple-200 text-sm hover:scale-110 transition-transform">▶</div></div>}
               </div>
               <h4 className="text-lg font-bold uppercase group-hover:text-purple-400 transition-colors text-gray-100">{item.titles[lang]}</h4>
@@ -305,11 +313,19 @@ export default function Home() {
           <h2 className="text-4xl font-bold mb-8 uppercase tracking-widest italic text-white font-display">Contact Us</h2>
           <p className="text-purple-400 mb-12 text-xl tracking-tighter font-semibold font-display">{t[lang].contact_msg}</p>
           <form className="grid grid-cols-1 md:grid-cols-2 gap-6 text-left" onSubmit={handleSubmit}>
+            {/* 스팸 봇 차단용 함정 필드 (사람 눈에는 보이지 않음) */}
+            <input type="text" name="company" value={formData.company} onChange={handleChange} className="hidden" tabIndex={-1} autoComplete="off" aria-hidden="true" />
             <div><label className="text-xs uppercase tracking-widest text-gray-300 mb-2 block font-display">{t[lang].form_name}</label><input type="text" name="name" required value={formData.name} onChange={handleChange} className="w-full bg-white/5 border border-white/10 px-4 py-3 text-base text-white focus:border-purple-500 outline-none transition-colors" /></div>
             <div><label className="text-xs uppercase tracking-widest text-gray-300 mb-2 block font-display">{t[lang].form_phone}</label><input type="text" name="phone" required value={formData.phone} onChange={handleChange} className="w-full bg-white/5 border border-white/10 px-4 py-3 text-base text-white focus:border-purple-500 outline-none transition-colors" /></div>
             <div className="md:col-span-2"><label className="text-xs uppercase tracking-widest text-gray-300 mb-2 block font-display">{t[lang].form_email}</label><input type="email" name="email" required value={formData.email} onChange={handleChange} className="w-full bg-white/5 border border-white/10 px-4 py-3 text-base text-white focus:border-purple-500 outline-none transition-colors" /></div>
             <div className="md:col-span-2"><label className="text-xs uppercase tracking-widest text-gray-300 mb-2 block font-display">{t[lang].form_msg}</label><textarea name="message" rows={5} required value={formData.message} onChange={handleChange} className="w-full bg-white/5 border border-white/10 px-4 py-3 text-base text-white focus:border-purple-500 outline-none transition-colors resize-none"></textarea></div>
-            <div className="md:col-span-2 text-center mt-4"><button type="submit" className="px-12 py-4 bg-white text-black text-xs font-bold uppercase tracking-[0.3em] hover:bg-gradient-to-r hover:from-purple-500 hover:to-amber-500 hover:text-white transition-all shadow-[0_0_20px_rgba(168,85,247,0.15)] hover:shadow-[0_0_30px_rgba(245,158,11,0.4)] border border-transparent font-display">{t[lang].form_send}</button></div>
+            <div className="md:col-span-2 text-center mt-4">
+              <button type="submit" disabled={formStatus === "sending"} className="px-12 py-4 bg-white text-black text-xs font-bold uppercase tracking-[0.3em] hover:bg-gradient-to-r hover:from-purple-500 hover:to-amber-500 hover:text-white transition-all shadow-[0_0_20px_rgba(168,85,247,0.15)] hover:shadow-[0_0_30px_rgba(245,158,11,0.4)] border border-transparent font-display disabled:opacity-50 disabled:cursor-wait">
+                {formStatus === "sending" ? t[lang].form_sending : t[lang].form_send}
+              </button>
+              {formStatus === "success" && <p className="mt-6 text-purple-300 text-sm tracking-wide">{t[lang].form_success}</p>}
+              {formStatus === "error" && <p className="mt-6 text-red-400 text-sm tracking-wide">{t[lang].form_error}</p>}
+            </div>
           </form>
         </div>
       </section>
