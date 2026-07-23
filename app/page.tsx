@@ -188,6 +188,7 @@ export default function Home() {
   const categories = ["ALL", "PRODUCTION", "SHOOTING", "EDIT", "COLOR GRADING", "D.I.T"];
   
   const portfolioData: Project[] = [
+    { titles: { KR: "009:민원처리반", EN: "009: Civil Complaint Unit", JP: "009:苦情処理班" }, roleKey: "role_edit_color", cats: ["EDIT", "COLOR GRADING"], link: "#", comingSoon: true },
     { titles: { KR: "아무도 모르는", EN: "No One Knows", JP: "誰も知らない" }, roleKey: "role_color", cats: ["COLOR GRADING"], link: "#", thumbnail: "/no-one-knows.jpg", comingSoon: true },
     { titles: { KR: "리얼월드 도쿄", EN: "Real World Tokyo", JP: "リアルワールド東京" }, roleKey: "role_shooting_edit", cats: ["SHOOTING", "EDIT"], link: "https://www.youtube.com/watch?v=Dd-6xObN1zU", thumbnail: "https://img.youtube.com/vi/Dd-6xObN1zU/maxresdefault.jpg" },
     { titles: { KR: "발로란트 CM SHINPAI MUYOU", EN: "VALORANT CM SHINPAI MUYOU", JP: "VALORANT CM 心配無用" }, roleKey: "role_shooting_3rd_assistant", cats: ["SHOOTING"], link: "https://www.youtube.com/watch?v=NrSUELYnt0s", thumbnail: "https://img.youtube.com/vi/NrSUELYnt0s/maxresdefault.jpg" },
