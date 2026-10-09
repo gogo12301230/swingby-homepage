@@ -149,6 +149,7 @@ export default function Home() {
       form_name: "이름", form_phone: "연락처", form_email: "이메일 주소", form_msg: "내용", form_send: "SEND",
       form_sending: "전송 중...", form_success: "메일을 보냈습니다. 빠르게 확인할게요!", form_error: "전송에 실패했습니다. 잠시 후 다시 시도해주세요.",
       role_edit: "편집", role_on_set: "현장편집 / 색보정", role_drone: "드론", role_dit: "D.I.T", role_complex: "D.I.T / 편집 / 색보정",
+      role_on_set_edit_color_dit: "편집 / 색보정 / 현장편집 / D.I.T",
       role_making: "메이킹 필름", role_production: "제작", role_pepsi: "현장편집 / D.I.T", role_color: "색보정",
       role_shooting_color: "촬영 / 색보정", role_total_edit: "종합편집", role_assistant_director: "조감독",
       role_shooting: "촬영", role_rough_cut: "가편집", role_edit_color: "편집 / 색보정", role_camera_crew: "촬영팀", role_shooting_edit: "촬영 / 편집"
@@ -164,6 +165,7 @@ export default function Home() {
       form_name: "お名前", form_phone: "電話番号", form_email: "メールアドレス", form_msg: "お問い合わせ内容", form_send: "送信する",
       form_sending: "送信中...", form_success: "お問い合わせを送信しました。内容を確認のうえ、ご連絡いたします。", form_error: "送信に失敗しました。しばらくしてからもう一度お試しください。",
       role_edit: "編集", role_on_set: "現場編集 / カラーグレーディング", role_drone: "ドローン", role_dit: "D.I.T", role_complex: "D.I.T / 編集 / カラーグレーディング",
+      role_on_set_edit_color_dit: "編集 / カラーグレーディング / 現場編集 / D.I.T",
       role_making: "メイキング映像", role_production: "制作", role_pepsi: "現場編集 / D.I.T", role_color: "カラーグレーディング",
       role_shooting_color: "撮影 / カラーグレーディング", role_total_edit: "総合編集", role_assistant_director: "助監督",
       role_shooting: "撮影", role_rough_cut: "仮編集", role_edit_color: "編集 / カラーグレーディング", role_camera_crew: "撮影チーム", role_shooting_edit: "撮影 / 編集"
@@ -179,6 +181,7 @@ export default function Home() {
       form_name: "Name", form_phone: "Phone", form_email: "Email", form_msg: "Message", form_send: "SEND",
       form_sending: "Sending...", form_success: "Message sent! We'll get back to you soon.", form_error: "Failed to send. Please try again later.",
       role_edit: "EDIT", role_on_set: "ON-SET EDIT / COLOR GRADING", role_drone: "DRONE", role_dit: "D.I.T", role_complex: "D.I.T / EDIT / COLOR GRADING",
+      role_on_set_edit_color_dit: "EDIT / COLOR GRADING / ON-SET EDIT / D.I.T",
       role_making: "MAKING FILM", role_production: "PRODUCTION", role_pepsi: "ON-SET EDIT / D.I.T", role_color: "COLOR GRADING",
       role_shooting_color: "CINEMATOGRAPHY / COLOR GRADING", role_total_edit: "TOTAL EDIT", role_assistant_director: "ASSISTANT DIRECTOR",
       role_shooting: "CINEMATOGRAPHY", role_rough_cut: "ROUGH CUT", role_edit_color: "EDIT / COLOR GRADING", role_camera_crew: "CAMERA CREW", role_shooting_edit: "CINEMATOGRAPHY / EDIT"
@@ -188,7 +191,7 @@ export default function Home() {
   const categories = ["ALL", "PRODUCTION", "SHOOTING", "EDIT", "COLOR GRADING", "D.I.T"];
   
   const portfolioData: Project[] = [
-    { titles: { KR: "009:민원처리반", EN: "009: Civil Complaint Unit", JP: "009:苦情処理班" }, roleKey: "role_edit_color", cats: ["EDIT", "COLOR GRADING"], link: "#", comingSoon: true },
+    { titles: { KR: "009:민원처리반", EN: "009: Civil Complaint Unit", JP: "009:苦情処理班" }, roleKey: "role_on_set_edit_color_dit", cats: ["EDIT", "COLOR GRADING", "D.I.T"], link: "#", comingSoon: true },
     { titles: { KR: "아무도 모르는", EN: "No One Knows", JP: "誰も知らない" }, roleKey: "role_color", cats: ["COLOR GRADING"], link: "#", thumbnail: "/no-one-knows.jpg", comingSoon: true },
     { titles: { KR: "리얼월드 도쿄", EN: "Real World Tokyo", JP: "リアルワールド東京" }, roleKey: "role_shooting_edit", cats: ["SHOOTING", "EDIT"], link: "https://www.youtube.com/watch?v=Dd-6xObN1zU", thumbnail: "https://img.youtube.com/vi/Dd-6xObN1zU/maxresdefault.jpg" },
     { titles: { KR: "발로란트 CM SHINPAI MUYOU", EN: "VALORANT CM SHINPAI MUYOU", JP: "VALORANT CM 心配無用" }, roleKey: "role_camera_crew", cats: ["SHOOTING"], link: "https://www.youtube.com/watch?v=NrSUELYnt0s", thumbnail: "https://img.youtube.com/vi/NrSUELYnt0s/maxresdefault.jpg" },
